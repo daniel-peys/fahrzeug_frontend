@@ -16,8 +16,8 @@
  */
 
 import { first, tap } from 'rxjs/operators';
-import { Injectable } from '@angular/core';
 import { BasicAuthService } from './basic-auth.service'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { Injectable } from '@angular/core';
 import { StorageService } from './storage.service'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import { Subject } from 'rxjs';
 import log from 'loglevel';
