@@ -22,7 +22,7 @@ export {
 } from './fahrzeug';
 export {
     FahrzeugReadService,
-    type FahrzeugServer,
+    type FahrzeugeServer,
     type Suchkriterien,
 } from './fahrzeugRead.service';
 export { FahrzeugWriteService } from './fahrzeugWrite.service';

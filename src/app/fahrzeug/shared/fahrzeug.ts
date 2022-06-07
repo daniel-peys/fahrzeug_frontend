@@ -20,7 +20,7 @@ import { type Temporal } from '@js-temporal/polyfill';
 /**
  * Alias-Typ für gültige Strings bei Fahrzeugtypen.
  */
-export type Fahrzeugtyp = 'ANHAENGER' | 'NUTZFAHRZEUG' | 'PKW';
+export type Fahrzeugtyp = 'A' | 'N' | 'P';
 
 /**
  * Model als Plain-Old-JavaScript-Object (POJO) fuer die Daten *UND*

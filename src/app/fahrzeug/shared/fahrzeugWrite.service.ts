@@ -128,7 +128,7 @@ export class FahrzeugWriteService {
         log.debug('BuchWriteService.update: buch=', fahrzeug);
 
         // id, version und schlagwoerter gehoeren nicht zu den serverseitigen Nutzdaten
-        const { id, version, schlagwoerter, ...buchDTO } = fahrzeug; // eslint-disable-line @typescript-eslint/no-unused-vars
+        const { id, version, ...fahrzeugDTO } = fahrzeug; // eslint-disable-line @typescript-eslint/no-unused-vars
         if (version === undefined) {
             const msg = `Keine Versionsnummer fuer das Buch ${id}`;
             log.debug(msg);
@@ -145,9 +145,9 @@ export class FahrzeugWriteService {
         /* eslint-enable @typescript-eslint/naming-convention */
         log.debug('BuchWriteService.update: headers=', headers);
 
-        log.debug('BuchWriteService.update: buchDTO=', buchDTO);
+        log.debug('BuchWriteService.update: buchDTO=', fahrzeugDTO);
         return this.httpClient
-            .put(url, buchDTO, { headers, observe: 'response' })
+            .put(url, fahrzeugDTO, { headers, observe: 'response' })
             .pipe(
                 first(),
                 // eslint-disable-next-line @typescript-eslint/no-unused-vars
