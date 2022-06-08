@@ -1,4 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+/* settings */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+/* variables */
+
+:root {
+  --bg-color-primary: #303030;
+  --bg-color-secondary: #454545;
+  --bg-color-tertiary: #e91e62;
+}

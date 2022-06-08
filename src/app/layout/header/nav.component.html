@@ -1,0 +1,26 @@
+<ul class="navbar-nav me-auto">
+  <li class="nav-item">
+    <a
+      routerLink="/fahrzeug/suche"
+      routerLinkActive="active"
+      class="nav-link d-flex align-content-center text-light"
+      aria-label="Suche Fahrzeuge"
+    >
+      <i class="material-icons">search</i>
+      <span class="ms-1">Suche</span>
+    </a>
+  </li>
+
+  <li class="nav-item" *ngIf="isAdmin$ | async">
+    <a
+      routerLink="/fahrzeug/create"
+      class="nav-link d-flex align-content-center text-light"
+      aria-label="Neues Fahrzeug anlegen"
+    >
+      <i class="material-icons">menu_book</i>
+      <span class="ms-1">Neues Fahrzeug</span>
+    </a>
+  </li>
+</ul>
+
+<hs-login-logout></hs-login-logout>
