@@ -59,7 +59,7 @@ export class BasicAuthService {
             return of();
         }
 
-        const loginPath = `${paths.login}/auth/rollen`;
+        const loginPath = `${paths.login}`;
         log.debug('BasicAuthService.login: loginPath=', loginPath);
 
         /* eslint-disable @typescript-eslint/naming-convention */
@@ -114,7 +114,7 @@ export class BasicAuthService {
         const base64 = window.btoa(`${username}:${password}`);
         const basicAuth = `Basic ${base64}`;
         const roles = body;
-
+        console.log(roles);
         this.storageService.saveAuthorization(basicAuth, roles);
         return roles;
     }

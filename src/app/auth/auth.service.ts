@@ -22,7 +22,7 @@ import { StorageService } from './storage.service'; // eslint-disable-line @type
 import { Subject } from 'rxjs';
 import log from 'loglevel';
 
-export const ROLLE_ADMIN = 'admin';
+export const ROLLE_ADMIN = 'ADMIN';
 // Spring Security:
 // export const ROLLE_ADMIN = 'ROLE_ADMIN'
 
@@ -103,8 +103,8 @@ export class AuthService {
      * @return String fuer JWT oder Basic-Authentifizierung
      */
     get authorization() {
-        // return this.storageService.authorization;
-        return 'Basic YWRtaW46cA==';
+        return this.storageService.authorization;
+        //  return 'Basic YWRtaW46cA==';
     }
 
     /**
@@ -123,6 +123,7 @@ export class AuthService {
      *         sonst false.
      */
     get isAdmin() {
+        console.log(`!TEST!${this.storageService.roles.includes(ROLLE_ADMIN)}`);
         return this.storageService.roles.includes(ROLLE_ADMIN);
     }
 
