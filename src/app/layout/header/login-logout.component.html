@@ -5,8 +5,11 @@
   (submit)="onLogout()"
   *ngIf="(isLoggedIn$ | async) || init; else login"
 >
-  <button type="submit" class="btn btn-link text-light">
-    <span class="me-1">Logout</span>
+  <button
+    type="submit"
+    class="btn btn-link text-light text-decoration-none d-flex align-items-center"
+  >
+    <span>Logout</span>
     <i class="material-icons md-48">chevron_right</i>
   </button>
 </form>
