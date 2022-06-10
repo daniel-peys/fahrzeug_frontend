@@ -5,7 +5,7 @@ import { type Suchkriterien } from '../../shared';
 import log from 'loglevel';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-suchformular</code>
+ * Component for the tag <code>hs-suchformular</code>
  */
 @Component({
     selector: 'hs-suchformular',
@@ -24,8 +24,6 @@ export class SuchformularComponent {
 
     #nachname = '';
 
-    // DI: Constructor Injection (React hat uebrigens keine DI)
-    // Empfehlung: Konstruktor nur fuer DI
     constructor() {
         log.debug('SuchformularComponent.constructor()');
     }
@@ -51,9 +49,8 @@ export class SuchformularComponent {
     }
 
     /**
-     * Suche nach Fahrzeugen, die den spezfizierten Suchkriterien entsprechen
-     * @return false, um das durch den Button-Klick ausgel&ouml;ste Ereignis
-     *         zu konsumieren.
+     * Search fahrzeuge which correspond to the search criteria
+     * @return false, to cancel the event of the button
      */
     onSubmit() {
         log.debug(

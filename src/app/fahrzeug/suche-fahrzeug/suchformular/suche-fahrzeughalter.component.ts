@@ -3,7 +3,7 @@ import { Subject } from 'rxjs';
 import log from 'loglevel';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-suche-titel</code>
+ * Componen for the tag <code>hs-suche-titel</code>
  */
 @Component({
     selector: 'hs-suche-fahrzeughalter',

@@ -1,30 +1,6 @@
-/*
- * Copyright (C) 2016 - present Juergen Zimmermann, Hochschule Karlsruhe
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
-// Alternativen: Local Storage oder Session-Cookies mit dem Token
-
 import { Injectable } from '@angular/core';
 import { Temporal } from '@js-temporal/polyfill';
 import log from 'loglevel';
-
-// Namen der Cookies: nur als Speichermechanismus (nicht zum Server übertragen):
-// Ablaufdatum oder Session-Cookie (Lebensdauer gebunden an Tab).
-// Kein XSS (Cross-Site Scripting) wie bei Local Storage
-// Evtl. CSRF (Cross-Site Request Forgery)
 
 @Injectable({ providedIn: 'root' })
 export class StorageService {
@@ -40,7 +16,6 @@ export class StorageService {
 
     get authorization() {
         return this.#getCookie(StorageService.AUTHORIZATION);
-        // return ' Basic YWRtaW46cA==';
     }
 
     saveAuthorization(
@@ -54,16 +29,13 @@ export class StorageService {
             authorization,
             expirationInMillis,
         );
-        // z.B. ['admin', 'mitarbeiter'] -> 'admin,mitarbeiter'
         const rolesStr: string = roles.join(StorageService.SEPARATOR);
         log.debug('StorageService.saveAuthorization: rolesStr=', rolesStr);
         this.#setCookie(StorageService.ROLES, rolesStr, expirationInMillis);
     }
 
     get roles() {
-        // z.B. 'admin,mitarbeiter'
         const rolesStr = this.#getCookie(StorageService.ROLES);
-        // z.B. ['admin', 'mitarbeiter']
         return rolesStr === undefined
             ? []
             : rolesStr.split(StorageService.SEPARATOR);
@@ -74,12 +46,9 @@ export class StorageService {
         this.#deleteCookie(StorageService.ROLES);
     }
 
-    // In Anlehnung an
-    // https://github.com/BCJTI/ng2-cookies/blob/master/src/services/cookie.ts
-
     /**
-     * @param name Name des gesuchten Cookies
-     * @return Werte des gefundenes Cookie oder undefined
+     * @param name name of the searched cookie
+     * @return values of the searched cookie or undefined
      */
     #getCookie(name: string) {
         const encodedName = encodeURIComponent(name);
@@ -87,7 +56,7 @@ export class StorageService {
             `(?:^${encodedName}|;\\s*${encodedName})=(.*?)(?:;|$)`,
             'gu',
         );
-        // alle Cookies durchsuchen
+        // search all cookies
         const result = regexp.exec(document.cookie);
         if (result === null) {
             return;
@@ -96,16 +65,15 @@ export class StorageService {
         if (encoded === undefined) {
             return;
         }
-        // z.B. %20 durch Leerzeichen ersetzen
         return decodeURIComponent(encoded);
     }
 
     /**
-     * @param name Name des Cookies
-     * @param value Wert des Cookies
-     * @param expires Ablaufdatum in Millisekunden. Default: Session.
-     * @param path Pfad des Cookies. Default: /.
-     * @param domain Domain des Cookies. Default: aktuelle Domain.
+     * @param name name of the cookie
+     * @param value value of the cookie
+     * @param expires expiry date of the cookie. default is session.
+     * @param path path of the cookies. default: /.
+     * @param domain domain of the cookie. default: current domain.
      */
     // eslint-disable-next-line max-params
     #setCookie(
@@ -120,7 +88,6 @@ export class StorageService {
         )};`;
 
         if (expires !== undefined) {
-            // TODO Das neue "Temporal API" bietet keine Konvertierung in einen UTC-String
             const expirationDate = new Date(expires);
             cookieStr += `expires=${expirationDate.toUTCString()};`;
         }
@@ -130,32 +97,22 @@ export class StorageService {
         if (domain !== undefined) {
             cookieStr += `domain=${domain};`;
         }
-        // Kein Zugriff mit JavaScript; Uebertragung nur mit HTTPS
-        // cookieStr += 'HttpOnly; Secure;'
 
-        // Uebertragung nur mit HTTPS
+        // transmission only with HTTPS
         cookieStr += 'Secure;';
 
-        // Schutz vor XSS
+        // protection of XSS
         cookieStr += 'SameSite=Strict;';
 
         log.debug('StorageService.#setCookie: ', cookieStr);
-        // neues Cookie anlegen
+        // create new cookie
         document.cookie = cookieStr;
-
-        // cookieStore ist nur bei HTTPS verfuegbar und nicht in jedem Browser
-        // await cookieStore.set({
-        //     name,
-        //     value,
-        //     expires: ...,
-        //     domain,
-        // });
     }
 
     /**
-     * @param name Name des Cookies
-     * @param path Pfad des Cookies. Default: /.
-     * @param domain Domain des Cookies. Default: aktuelle Domain.
+     * @param name name of the cookie
+     * @param path path of the cookies
+     * @param domain domain des cookies, default: recent domain.
      */
     #deleteCookie(name: string, path?: string, domain?: string) {
         if (this.#getCookie(name) !== undefined) {

@@ -4,7 +4,7 @@ import { Subject } from 'rxjs';
 import log from 'loglevel';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-suche-verlag</code>
+ * Component for the tag <code>hs-suche-verlag</code>
  */
 @Component({
     selector: 'hs-suche-fahrzeugtyp',
@@ -22,7 +22,6 @@ export class SucheFahrzeugtypComponent {
     }
 
     onChange(value: string) {
-        // https://stackoverflow.com/questions/44321326/property-value-does-not-exist-on-type-eventtarget-in-typescript
         log.debug('SucheFahrzeugtypComponent.onChange: value=', value);
         this.fahrzeugtype$.next(value as Fahrzeugtyp | '');
     }

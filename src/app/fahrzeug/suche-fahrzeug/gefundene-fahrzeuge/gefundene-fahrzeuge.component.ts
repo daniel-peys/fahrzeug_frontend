@@ -16,9 +16,8 @@ import { Subject } from 'rxjs';
 import log from 'loglevel';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-gefundene-buecher</code>, um zun&auml;chst
- * das Warten und danach das Ergebnis der Suche anzuzeigen, d.h. die gefundenen
- * B&uuml;cher oder eine Fehlermeldung.
+ * Component for the Tag <code>hs-gefundene-buecher</code>, to show the waiting first and afterwards
+ * the result of the search (found or error)
  */
 @Component({
     selector: 'hs-gefundene-fahrzeuge',
@@ -31,12 +30,9 @@ export class GefundeneFahrzeugeComponent implements OnInit {
 
     isAdmin!: boolean;
 
-    // nachtraegliches Einloggen mit der Rolle "admin" beobachten
     isAdmin$ = new Subject<boolean>();
 
-    // eslint-disable-next-line max-params
     constructor(
-        private readonly service: FahrzeugReadService,
         private readonly router: Router,
         private readonly authService: AuthService,
         private readonly writeService: FahrzeugWriteService,
@@ -52,30 +48,27 @@ export class GefundeneFahrzeugeComponent implements OnInit {
             .pipe(
                 first(),
                 tap((rollen: string[]) =>
-                    // ein neues Observable vom Typ boolean
                     this.isAdmin$.next(rollen.includes(ROLLE_ADMIN)),
                 ),
             )
-            // das Subject von AuthService abonnieren bzw. beobachten
             .subscribe();
     }
 
     /**
-     * Das ausgew&auml;hlte bzw. angeklickte Fahrzeug in der Detailsseite anzeigen.
-     * @param fahrzeug Das ausgew&auml;hlte Fahrzeug
+     * Show the details of the clicked fahrzeug
+     * @param fahrzeug the selected fahrzeug
      */
     onClick(fahrzeug: Fahrzeug) {
         log.debug('GefundeneFahrzeugeComponent.onClick: fahrzeug=', fahrzeug);
 
-        // URL mit der Fahrzeug-ID, um ein Bookmark zu ermoeglichen
-        // Gefundenes Fahrzeug als NavigationExtras im Router puffern
+        // URL with the Fahrzeug-ID, to allow a Bookmark
         const state = { fahrzeug };
         return this.router.navigate([`/fahrzeuge/${fahrzeug.id}`], { state });
     }
 
     /**
-     * Das angeklickte fahrzeug loeschen.
-     * @param fahrzeug Das fahrzeug
+     * delete the selected fahrzeug.
+     * @param fahrzeug the fahrzeug
      */
     onRemove(fahrzeug: Fahrzeug) {
         log.debug('GefundeneFahrzeugComponent.onRemove: fahrzeug=', fahrzeug);

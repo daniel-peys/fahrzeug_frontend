@@ -11,15 +11,6 @@ import { HttpStatusCode } from '@angular/common/http';
 import { Title } from '@angular/platform-browser'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import log from 'loglevel';
 
-/**
- * Komponente f&uuml;r das Tag <code>&lt;hs-suche-buecher&gt;</code>, die aus
- * den Kindkomponenten f&uuml;r diese Tags besteht:
- * <ul>
- *  <li> <code>hs-suchformular</code>
- *  <li> <code>hs-waiting</code>
- *  <li> <code>hs-suchergebnis</code>
- * </ul>
- */
 @Component({
     selector: 'hs-suche-fahrzeuge',
     templateUrl: './suche-fahrzeuge.component.html',
@@ -31,7 +22,6 @@ export class SucheFahrzeugeComponent implements OnInit {
 
     errorMsg: string | undefined;
 
-    // Parameter Properties (Empfehlung: Konstruktor nur fuer DI)
     constructor(
         private readonly service: FahrzeugReadService,
         private readonly titleService: Title,
@@ -39,20 +29,12 @@ export class SucheFahrzeugeComponent implements OnInit {
         log.debug('SucheFahrzeugeComponent.constructor()');
     }
 
-    // Wird von Angular aufgerufen, wenn der DOM-Baum fertig ist,
-    // d.h. nach dem "Rendering".
-    // Wird immer generiert, wenn Angular-CLI genutzt wird.
     ngOnInit() {
         this.titleService.setTitle('Suche');
     }
 
     /**
-     * Das Attribut <code>suchkriterien</code> wird auf den Wert des Ereignisses
-     * <code>suchkriterien</code> vom Typ Suchkriterien gesetzt. Diese Methode
-     * wird aufgerufen, wenn in der Kindkomponente f&uuml;r
-     * <code>hs-suchformular</code> das Ereignis ausgel&ouml;st wird.
-     *
-     * @param suchkriterien f&uuml;r die Suche.
+     * @param searchCriteria for the search.
      */
     suchen(suchkriterien: Suchkriterien) {
         log.debug(
@@ -65,8 +47,6 @@ export class SucheFahrzeugeComponent implements OnInit {
 
         this.waiting = true;
 
-        // Observable: mehrere Werte werden "lazy" bereitgestellt, statt in einem JSON-Array
-        // pipe ist eine "pure" Funktion, die ein Observable in ein NEUES Observable transformiert
         this.service
             .find(suchkriterien) // eslint-disable-line unicorn/no-array-callback-reference
             .pipe(

@@ -93,8 +93,8 @@ export class FahrzeugReadService {
     }
 
     /**
-     * Ein Buch anhand der ID suchen
-     * @param id Die ID des gesuchten Buchs
+     * Search one Fahrzeug with the ID
+     * @param id the ID of the fahrzeug
      */
     findById(id: string | undefined): Observable<Fahrzeug | FindError> {
         log.debug('BuchReadService.findById: id=', id);
@@ -104,7 +104,7 @@ export class FahrzeugReadService {
             return of(this.#buildFindError());
         }
 
-        // wegen fehlender Versionsnummer (im ETag) nachladen
+        // load here, due to the missing version number
         const url = `${this.#baseUrl}/${id}`;
         log.debug('BuchReadService.findById: url=', url);
 
@@ -117,15 +117,13 @@ export class FahrzeugReadService {
                 /* eslint-enable object-curly-newline */
 
                 .pipe(
-                    // 1 Datensatz empfangen und danach implizites "unsubscribe"
                     first(),
                     // eslint-disable-next-line @typescript-eslint/no-unused-vars
                     catchError((err: unknown, _$) => {
                         const errResponse = err as HttpErrorResponse;
                         return of(this.#buildFindError(errResponse));
                     }),
-
-                    // entweder Observable<HttpResponse<BuchServer>> oder Observable<FindError>
+                    // Observable<HttpResponse<BuchServer>> or Observable<FindError>
                     map(restResult => this.#toBuchOrError(restResult)),
                 )
         );
@@ -151,15 +149,15 @@ export class FahrzeugReadService {
     }
 
     /**
-     * Suchkriterien in Request-Parameter konvertieren.
-     * @param suchkriterien Suchkriterien fuer den GET-Request.
-     * @return Parameter fuer den GET-Request
+     * Convert search criteria to request-params
+     * @param searchCriteria search critera for the GET-Request.
+     * @return params for the GET-Request
      */
     #suchkriterienToHttpParams(
         suchkriterien: Suchkriterien | undefined,
     ): HttpParams {
         log.debug(
-            'BuchReadService.#suchkriterienToHttpParams: suchkriterien=',
+            'FahrzeugReadService.#suchkriterienToHttpParams: suchkriterien=',
             suchkriterien,
         );
         let httpParams = new HttpParams();
@@ -182,9 +180,11 @@ export class FahrzeugReadService {
         if (vorname !== '') {
             httpParams = httpParams.set('vorname', vorname);
         }
+
         if (nachname !== '') {
             httpParams = httpParams.set('nachname', nachname);
         }
+
         return httpParams;
     }
 
