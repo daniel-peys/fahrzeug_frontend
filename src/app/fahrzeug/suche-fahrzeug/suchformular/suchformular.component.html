@@ -3,13 +3,13 @@
     <i class="material-icons">search</i>
     <span class="ms-1"> Eingabe der Suchkriterien </span>
   </div>
-  <div class="container w-50">
+  <div class="container">
     <form (submit)="onSubmit()" role="form">
       <hs-suche-kennzeichen
         (kennzeichen$)="setKennzeichen($event)"
       ></hs-suche-kennzeichen>
       <hs-suche-fahrzeugtyp
-        (fahrzeugtyp$)="setFahrzeugtyp($event)"
+        (fahrzeugtype$)="setFahrzeugtyp($event)"
       ></hs-suche-fahrzeugtyp>
       <hs-suche-fahrzeughalter
         (vorname$)="setVorname($event)"
@@ -17,7 +17,7 @@
       >
       </hs-suche-fahrzeughalter>
 
-      <div class="row">
+      <div class="row info-box">
         <div class="d-flex align-items-center">
           <i class="material-icons">info</i>
           <span class="ms-1">

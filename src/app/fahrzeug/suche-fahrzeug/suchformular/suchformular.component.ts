@@ -18,7 +18,7 @@ export class SuchformularComponent {
 
     #kennzeichen = '';
 
-    #fahrzeugtyp: Fahrzeugtyp | '' = '';
+    #fahrzeugtype: Fahrzeugtyp | '' = '';
 
     #vorname = '';
 
@@ -37,7 +37,7 @@ export class SuchformularComponent {
 
     setFahrzeugtyp(fahrzeugtyp: Fahrzeugtyp | '') {
         log.debug('SuchformularComponent.setFahrzeugtyp', fahrzeugtyp);
-        this.#fahrzeugtyp = fahrzeugtyp;
+        this.#fahrzeugtype = fahrzeugtyp;
     }
 
     setVorname(vorname: string) {
@@ -59,14 +59,14 @@ export class SuchformularComponent {
         log.debug(
             'SuchformularComponent.onSubmit: kennzeichen / fahrzeugtyp / fahrzeughalter',
             this.#kennzeichen,
-            this.#fahrzeugtyp,
+            this.#fahrzeugtype,
             this.#vorname,
             this.#nachname,
         );
 
         this.suchkriterien$.next({
             kennzeichen: this.#kennzeichen,
-            fahrzeugtyp: this.#fahrzeugtyp,
+            fahrzeugtype: this.#fahrzeugtype,
             fahrzeughalter: {
                 vorname: this.#vorname,
                 nachname: this.#nachname,

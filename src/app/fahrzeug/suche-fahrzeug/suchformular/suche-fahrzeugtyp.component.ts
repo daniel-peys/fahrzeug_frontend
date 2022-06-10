@@ -9,21 +9,21 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-suche-fahrzeugtyp',
     templateUrl: './suche-fahrzeugtyp.component.html',
+    styleUrls: ['./suche-fahrzeugtyp.component.scss'],
 })
 export class SucheFahrzeugtypComponent {
-    fahrzeugtyp: Fahrzeugtyp | '' = '';
+    fahrzeugtype: Fahrzeugtyp | '' = '';
 
     @Output()
-    readonly fahrzeugtyp$ = new Subject<Fahrzeugtyp | ''>();
+    readonly fahrzeugtype$ = new Subject<Fahrzeugtyp | ''>();
 
     constructor() {
         log.debug('SucheFahrzeugtypComponent.constructor()');
     }
 
-    onChange(event: Event) {
+    onChange(value: string) {
         // https://stackoverflow.com/questions/44321326/property-value-does-not-exist-on-type-eventtarget-in-typescript
-        const { value } = event.target as HTMLSelectElement;
         log.debug('SucheFahrzeugtypComponent.onChange: value=', value);
-        this.fahrzeugtyp$.next(value as Fahrzeugtyp | '');
+        this.fahrzeugtype$.next(value as Fahrzeugtyp | '');
     }
 }

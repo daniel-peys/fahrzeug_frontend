@@ -8,7 +8,7 @@
     <span class="ms-1">Gefundene Fahrzeuge</span>
   </div>
   <div>
-    <table class="table table-responsive mx-auto">
+    <table class="table">
       <thead>
         <th>Nr.</th>
         <th>ID</th>
@@ -59,7 +59,7 @@
     </table>
   </div>
   <div class="mt-4">
-    <div class="d-flex align-items-center">
+    <div class="d-flex align-items-center info-box">
       <i class="material-icons">info</i>
       <span class="ms-1" [ngPlural]="fahrzeuge.length">
         <!-- zu vergleichender Ausdruck -->
@@ -71,7 +71,7 @@
       </span>
     </div>
 
-    <div class="d-flex align-items-center">
+    <div class="d-flex align-items-center info-box">
       <i class="material-icons">info</i>
       <span class="ms-1">
         Zur Anzeige der JSON-Datensätze in gefundene-fahrzeuge.html am Dateiende

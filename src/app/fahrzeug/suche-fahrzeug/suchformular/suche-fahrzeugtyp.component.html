@@ -3,10 +3,10 @@
     <mat-label>Fahrzeugtyp</mat-label>
     <div>
       <mat-select
-        title="Kennzeichen"
-        [(ngModel)]="fahrzeugtyp"
-        name="kennzeichen"
-        (change)="onChange($event)"
+        title="Fahrzeugtype"
+        [(ngModel)]="fahrzeugtype"
+        name="fahrzeugtype"
+        (selectionChange)="onChange($event.value)"
       >
         <mat-option value=""></mat-option>
         <mat-option value="A">Anhänger</mat-option>

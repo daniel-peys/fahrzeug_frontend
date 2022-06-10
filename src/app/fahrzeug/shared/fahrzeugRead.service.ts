@@ -33,7 +33,7 @@ import { paths } from '../../shared';
 
 export interface Suchkriterien {
     kennzeichen: string;
-    fahrzeugtyp: Fahrzeugtyp | '';
+    fahrzeugtype: Fahrzeugtyp | '';
     fahrzeughalter: Fahrzeughalter;
 }
 
@@ -232,15 +232,15 @@ export class FahrzeugReadService {
             return httpParams;
         }
 
-        const { kennzeichen, fahrzeugtyp, fahrzeughalter } = suchkriterien;
+        const { kennzeichen, fahrzeugtype, fahrzeughalter } = suchkriterien;
         const { vorname, nachname } = fahrzeughalter;
 
         if (kennzeichen !== '') {
             httpParams = httpParams.set('kennzeichen', kennzeichen);
         }
 
-        if (fahrzeugtyp !== '') {
-            httpParams = httpParams.set('fahrzeugtyp', fahrzeugtyp);
+        if (fahrzeugtype !== '') {
+            httpParams = httpParams.set('fahrzeugtyp', fahrzeugtype);
         }
 
         if (vorname !== '') {

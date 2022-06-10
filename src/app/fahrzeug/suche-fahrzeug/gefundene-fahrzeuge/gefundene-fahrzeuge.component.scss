@@ -13,3 +13,17 @@
 .results-container {
   border-top: solid var(--bg-color-secondary) 1px;
 }
+
+/* media queries */
+@media only screen and (max-width: 800px) {
+  table {
+    font-size: 0.8rem;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  table {
+    width: 75%;
+    margin: auto;
+  }
+}

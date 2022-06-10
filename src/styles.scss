@@ -15,12 +15,9 @@ body {
 /* input settings */
 
 mat-label,
-input {
-  color: whitesmoke !important;
-}
-
+input,
 input::placeholder {
-  color: whitesmoke;
+  color: whitesmoke !important;
 }
 
 /* button settings */
@@ -49,4 +46,12 @@ input::placeholder {
 .btn:hover {
   cursor: pointer;
   opacity: 0.8;
+}
+
+/* media queries */
+
+@media only screen and (max-width: 600px) {
+  .info-box {
+    font-size: 0.7rem;
+  }
 }

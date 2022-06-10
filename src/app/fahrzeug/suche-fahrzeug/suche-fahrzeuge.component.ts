@@ -23,7 +23,6 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-suche-fahrzeuge',
     templateUrl: './suche-fahrzeuge.component.html',
-    styleUrls: ['./suche-farhzeug.scss'],
 })
 export class SucheFahrzeugeComponent implements OnInit {
     waiting = false;
