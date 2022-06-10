@@ -1,5 +1,5 @@
 <ul class="navbar-nav me-auto">
-  <li class="nav-item">
+  <li class="nav-item" *ngIf="isAdmin$ | async">
     <a
       routerLink="/fahrzeuge/suche"
       routerLinkActive="active"

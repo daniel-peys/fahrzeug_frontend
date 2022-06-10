@@ -74,7 +74,7 @@ export const toFahrzeug = (fahrzeugServer: FahrzeugServer, etag?: string) => {
         kennzeichen,
         kilometerstand,
         erstzulassung,
-        fahrzeugtyp,
+        fahrzeugtype,
         fahrzeughalter,
     } = fahrzeugServer;
 
@@ -96,7 +96,7 @@ export const toFahrzeug = (fahrzeugServer: FahrzeugServer, etag?: string) => {
         kennzeichen,
         kilometerstand,
         erstzulassung: datumTemporal,
-        fahrzeugtyp,
+        fahrzeugtype,
         fahrzeughalter,
         version,
     };
@@ -119,7 +119,7 @@ export const toFahrzeugServer = (fahrzeug: Fahrzeug): FahrzeugServer => {
         kennzeichen: fahrzeug.kennzeichen,
         kilometerstand: fahrzeug.kilometerstand,
         erstzulassung,
-        fahrzeugtyp: fahrzeug.fahrzeugtyp,
+        fahrzeugtype: fahrzeug.fahrzeugtype,
         fahrzeughalter: fahrzeug.fahrzeughalter,
     };
 };

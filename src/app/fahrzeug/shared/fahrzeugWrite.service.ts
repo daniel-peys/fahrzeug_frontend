@@ -128,7 +128,7 @@ export class FahrzeugWriteService {
         log.debug('BuchWriteService.update: buch=', fahrzeug);
 
         // id, version und schlagwoerter gehoeren nicht zu den serverseitigen Nutzdaten
-        const { id, version, ...fahrzeugDTO } = fahrzeug; // eslint-disable-line @typescript-eslint/no-unused-vars
+        const { id, version, ...fahrzeugDTO } = fahrzeug;
         if (version === undefined) {
             const msg = `Keine Versionsnummer fuer das Buch ${id}`;
             log.debug(msg);

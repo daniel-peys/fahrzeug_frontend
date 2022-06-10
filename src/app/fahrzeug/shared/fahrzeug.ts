@@ -33,7 +33,7 @@ export interface Fahrzeug {
     kennzeichen: string;
     kilometerstand: number;
     erstzulassung: Temporal.PlainDate | undefined;
-    fahrzeugtyp: Fahrzeugtyp;
+    fahrzeugtype: Fahrzeugtyp;
     fahrzeughalter: Fahrzeughalter;
 }
 
@@ -48,6 +48,6 @@ export interface FahrzeugShared {
     beschreibung: string;
     kennzeichen: string;
     kilometerstand: number;
-    fahrzeugtyp: Fahrzeugtyp;
+    fahrzeugtype: Fahrzeugtyp;
     fahrzeughalter: Fahrzeughalter;
 }

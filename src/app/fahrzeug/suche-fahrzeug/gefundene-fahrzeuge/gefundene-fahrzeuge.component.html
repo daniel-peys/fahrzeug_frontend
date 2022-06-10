@@ -29,7 +29,7 @@
           <td (click)="onClick(fahrzeug)">{{ fahrzeug.id }}</td>
           <td (click)="onClick(fahrzeug)">{{ fahrzeug.kennzeichen }}</td>
           <td (click)="onClick(fahrzeug)">
-            <span [ngSwitch]="fahrzeug.fahrzeugtyp">
+            <span [ngSwitch]="fahrzeug.fahrzeugtype">
               <span *ngSwitchCase="'A'">Anhänger</span>
               <span *ngSwitchCase="'N'">Nutzfahrzeug</span>
               <span *ngSwitchCase="'P'">PKW</span>
