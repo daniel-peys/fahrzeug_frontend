@@ -12,6 +12,11 @@ body {
   background-color: var(--bg-color-primary) !important;
 }
 
+mat-label,
+input {
+  color: whitesmoke !important;
+}
+
 /* variables */
 
 :root {

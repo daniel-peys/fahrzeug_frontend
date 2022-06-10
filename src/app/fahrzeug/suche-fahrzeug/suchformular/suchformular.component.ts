@@ -1,5 +1,4 @@
 import { Component, Output } from '@angular/core';
-import { type Fahrzeughalter } from '../../shared/fahrzeughalter';
 import { type Fahrzeugtyp } from '../../shared/fahrzeug';
 import { Subject } from 'rxjs';
 import { type Suchkriterien } from '../../shared';
@@ -11,6 +10,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-suchformular',
     templateUrl: './suchformular.component.html',
+    styleUrls: ['./suchformular.component.scss'],
 })
 export class SuchformularComponent {
     @Output()

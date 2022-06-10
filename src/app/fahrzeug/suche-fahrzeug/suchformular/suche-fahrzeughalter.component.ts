@@ -1,5 +1,4 @@
 import { Component, Output } from '@angular/core';
-import { type Fahrzeughalter } from '../../shared/fahrzeughalter';
 import { Subject } from 'rxjs';
 import log from 'loglevel';
 
