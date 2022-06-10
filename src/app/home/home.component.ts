@@ -21,11 +21,7 @@ import log from 'loglevel';
 
 @Component({
     selector: 'hs-home',
-    // https://next.angular.io/guide/i18n
-    // https://angular.io/guide/i18n
-    // https://github.com/angular/angular/tree/master/packages/common/locales
-    // http://cldr.unicode.org
-    templateUrl: './home.component.html',
+    template: '',
 })
 export class HomeComponent implements OnInit {
     constructor(private readonly title: Title) {
@@ -33,6 +29,6 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.title.setTitle('Beispiel');
+        this.title.setTitle('Fahrzeuge | Home');
     }
 }
