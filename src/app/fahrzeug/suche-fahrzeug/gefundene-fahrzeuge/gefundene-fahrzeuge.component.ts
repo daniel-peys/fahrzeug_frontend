@@ -23,6 +23,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-gefundene-fahrzeuge',
     templateUrl: './gefundene-fahrzeuge.component.html',
+    styleUrls: ['./gefundene-fahrzeuge.component.scss'],
 })
 export class GefundeneFahrzeugeComponent implements OnInit {
     @Input()

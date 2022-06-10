@@ -1,4 +1,4 @@
-/* settings */
+/* general settings */
 
 *,
 *::after,
@@ -12,9 +12,25 @@ body {
   background-color: var(--bg-color-primary) !important;
 }
 
+/* input settings */
+
 mat-label,
 input {
   color: whitesmoke !important;
+}
+
+input::placeholder {
+  color: whitesmoke;
+}
+
+/* button settings */
+
+.btn:focus,
+.btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  appearance: none !important;
 }
 
 /* variables */
@@ -23,4 +39,14 @@ input {
   --bg-color-primary: #303030;
   --bg-color-secondary: #454545;
   --bg-color-tertiary: #e91e62;
+}
+
+/* shared classes */
+
+/* clickable */
+
+.clickable:hover,
+.btn:hover {
+  cursor: pointer;
+  opacity: 0.8;
 }

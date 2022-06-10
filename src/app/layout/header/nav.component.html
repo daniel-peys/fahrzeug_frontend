@@ -1,5 +1,5 @@
 <ul class="navbar-nav me-auto">
-  <li class="nav-item" *ngIf="isAdmin$ | async">
+  <li class="nav-item clickable" *ngIf="isAdmin$ | async">
     <a
       routerLink="/fahrzeuge/suche"
       routerLinkActive="active"
@@ -11,7 +11,7 @@
     </a>
   </li>
 
-  <li class="nav-item" *ngIf="isAdmin$ | async">
+  <li class="nav-item clickable" *ngIf="isAdmin$ | async">
     <a
       routerLink="/fahrzeuge/create"
       class="nav-link d-flex align-content-center text-light"

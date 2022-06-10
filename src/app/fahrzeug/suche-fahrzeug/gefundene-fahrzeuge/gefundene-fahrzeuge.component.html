@@ -1,18 +1,19 @@
-<div class="card" aria-label="Gefundene Fahrzeuge" *ngIf="fahrzeuge.length">
-  <div class="card-header">
+<div
+  aria-label="Gefundene Fahrzeuge"
+  *ngIf="fahrzeuge.length"
+  class="d-flex flex-column align-items-center mb-4 mt-5 results-container"
+>
+  <div class="d-flex align-items-center mb-3 mt-4">
     <i class="material-icons">folder_open</i>
-    <span class="ms-1 fw-bold">Gefundene Fahrzeuge</span>
+    <span class="ms-1">Gefundene Fahrzeuge</span>
   </div>
-  <div class="card-body">
-    <table
-      class="table table-striped table-hover table-responsive"
-      [@easeIn]="'in'"
-    >
-      <thead class="thead-default">
+  <div>
+    <table class="table table-responsive mx-auto">
+      <thead>
         <th>Nr.</th>
         <th>ID</th>
         <th>Kennzeichen</th>
-        <th>Fahrzeugtyp</th>
+        <th class="text-center">Fahrzeugtyp</th>
         <th>
           <span class="visually-hidden">Spalte f&uuml;r Details</span>
         </th>
@@ -21,9 +22,6 @@
         </th>
       </thead>
       <tbody>
-        <!-- Template Binding: ngFor -->
-        <!-- Event-Binding: statt (click) auch on-click -->
-        <!-- ts als Komponente: https://stackoverflow.com/questions/34556277/angular2-table-rows-as-component -->
         <tr *ngFor="let fahrzeug of fahrzeuge; index as idx; trackBy: trackBy">
           <td (click)="onClick(fahrzeug)">{{ idx + 1 }}</td>
           <td (click)="onClick(fahrzeug)">{{ fahrzeug.id }}</td>
@@ -43,12 +41,16 @@
               [state]="{ fahrzeug }"
               title="Details anzeigen"
             >
-              <i class="material-icons">search</i>
+              <i class="material-icons show-details clickable">search</i>
             </a>
           </td>
           <!-- implizites "unsubscribe()" durch async -->
           <td *ngIf="isAdmin || (isAdmin$ | async)">
-            <span (click)="onRemove(fahrzeug)" title="Entfernen">
+            <span
+              (click)="onRemove(fahrzeug)"
+              title="Entfernen"
+              class="clickable"
+            >
               <i class="material-icons">delete</i>
             </span>
           </td>
@@ -56,8 +58,8 @@
       </tbody>
     </table>
   </div>
-  <div class="card-footer">
-    <div>
+  <div class="mt-4">
+    <div class="d-flex align-items-center">
       <i class="material-icons">info</i>
       <span class="ms-1" [ngPlural]="fahrzeuge.length">
         <!-- zu vergleichender Ausdruck -->
@@ -69,7 +71,7 @@
       </span>
     </div>
 
-    <div>
+    <div class="d-flex align-items-center">
       <i class="material-icons">info</i>
       <span class="ms-1">
         Zur Anzeige der JSON-Datensätze in gefundene-fahrzeuge.html am Dateiende

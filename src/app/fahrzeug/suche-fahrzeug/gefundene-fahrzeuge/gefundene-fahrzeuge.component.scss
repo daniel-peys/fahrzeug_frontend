@@ -1,0 +1,15 @@
+/* colors */
+
+* {
+  color: whitesmoke;
+}
+
+.show-details {
+  color: var(--bg-color-tertiary);
+}
+
+/* border */
+
+.results-container {
+  border-top: solid var(--bg-color-secondary) 1px;
+}
