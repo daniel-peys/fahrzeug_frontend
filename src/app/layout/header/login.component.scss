@@ -1,9 +1,4 @@
-small,
-input {
-  color: whitesmoke;
-}
-
-/* Change label color on focused */
+/* change label color on focused */
 ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
   color: whitesmoke !important;
 }

@@ -24,11 +24,10 @@ export class NavComponent implements OnInit {
         this.authService.rollen$
             .pipe(
                 tap((rollen: string[]) =>
-                    // ein neues Observable vom Typ boolean
                     this.isAdmin$.next(rollen.includes(ROLLE_ADMIN)),
                 ),
             )
-            // das Subject von AuthService abonnieren bzw. beobachten
+            // subscribe to the Subject of the AuthService and observe
             .subscribe();
     }
 }

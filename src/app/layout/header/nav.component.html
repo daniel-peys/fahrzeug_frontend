@@ -1,5 +1,5 @@
 <ul class="navbar-nav me-auto">
-  <li class="nav-item clickable" *ngIf="isAdmin$ | async">
+  <li class="nav-item clickable">
     <a
       routerLink="/fahrzeuge/suche"
       routerLinkActive="active"
@@ -10,7 +10,6 @@
       <span class="ms-1">Suche</span>
     </a>
   </li>
-
   <li class="nav-item clickable" *ngIf="isAdmin$ | async">
     <a
       routerLink="/fahrzeuge/create"
@@ -22,5 +21,4 @@
     </a>
   </li>
 </ul>
-
 <hs-login-logout></hs-login-logout>

@@ -31,11 +31,13 @@ export class LoginLogoutComponent implements OnInit {
 
         this.isLoggedIn$ = this.authService.isLoggedIn$;
         this.isLoggedIn$.subscribe();
-
-        // Initialisierung, falls zwischenzeitlich der Browser geschlossen wurde
         this.init = this.authService.isLoggedIn;
     }
 
+    /**
+     * login
+     * @returns login result
+     */
     onLogin() {
         log.debug('LoginLogoutComponent.onLogin()');
         if (this.username === undefined || this.username === null) {
@@ -50,7 +52,8 @@ export class LoginLogoutComponent implements OnInit {
     }
 
     /**
-     * Ausloggen und dabei Benutzername und Passwort zur&uuml;cksetzen.
+     * logout
+     * @return username and password
      */
     onLogout() {
         log.debug('LoginLogoutComponent.onLogout()');

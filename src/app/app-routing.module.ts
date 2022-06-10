@@ -2,14 +2,11 @@ import { PreloadAllModules, RouterModule, type Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 
-// Route-Definitionen fuer den Root-Router
-// Eine Route leitet zu einer neuen Ansicht ("View") in der SPA, wobei die
-// vorherige Ansicht ueberdeckt bzw. ausgeblendet wird.
 const routes: Routes = [
     {
         path: '',
         redirectTo: '',
-        // redirect erfordert pathMatch full
+        // redirect requires pathMatch full
         pathMatch: 'full',
         component: HomeComponent,
     },

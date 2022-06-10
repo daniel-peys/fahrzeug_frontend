@@ -28,31 +28,18 @@ import { environment } from '../environments/environment';
         HttpClientModule,
         LayoutModule,
         SharedModule,
-        // NICHT BuchModule wegen Lazy Loading
+        // Not FahrzeugModule because of Lazy Loading
     ],
-
-    // Eigene Komponenten des Moduls oder Direktiven oder Pipes
-    // Jede nutzbare Komponente muss in genau 1 Modul deklariert sein
-    declarations: [
-        // Eigentliche Komponente
-        AppComponent,
-    ],
-
-    // Services mit @Injectable()
+    declarations: [AppComponent],
     providers: [
         {
-            // Aufruf waehrend der Initialisierung
+            // call while initialize
             provide: APP_INITIALIZER,
             useFactory: appInitializer,
             multi: true,
         },
         authInterceptorProvider,
     ],
-
-    // Nur das Rootmodul hat die Property "bootstrap", um die
-    // Einstiegskomponente zu deklarieren
-    // https://angular.io/guide/entry-components
-    // https://blog.angularindepth.com/how-to-manually-bootstrap-an-angular-application-9a36ccf86429
     bootstrap: [AppComponent],
 })
 export class AppModule {}
