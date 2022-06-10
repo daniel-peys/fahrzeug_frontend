@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
 import { type Fahrzeug, type Fahrzeugtyp } from './fahrzeug';
 import { type FahrzeugServer, toFahrzeug } from './fahrzeugServer';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
@@ -31,6 +15,9 @@ import { Injectable } from '@angular/core';
 import log from 'loglevel';
 import { paths } from '../../shared';
 
+/**
+ * data template for search criteria
+ */
 export interface Suchkriterien {
     kennzeichen: string;
     fahrzeugtype: Fahrzeugtyp | '';
@@ -44,34 +31,15 @@ export interface FahrzeugeServer {
     };
 }
 
-// Methoden der Klasse HttpClient
-//  * get(url, options) – HTTP GET request
-//  * post(url, body, options) – HTTP POST request
-//  * put(url, body, options) – HTTP PUT request
-//  * patch(url, body, options) – HTTP PATCH request
-//  * delete(url, options) – HTTP DELETE request
-
-// Eine Service-Klasse ist eine "normale" Klasse gemaess ES 2015, die mittels
-// DI in eine Komponente injiziert werden kann, falls sie innerhalb von
-// provider: [...] bei einem Modulbereitgestellt wird.
-// Eine Komponente realisiert gemaess MVC-Pattern den Controller und die View.
-// Die Anwendungslogik wird vom Controller an Service-Klassen delegiert.
-// Service:
-// - wiederverwendbarer Code: in ggf. verschiedenen Controller
-// - Zugriff auf Daten, z.B. durch Aufruf von RESTful Web Services
-// - View (HTML-Template) <- Controller <- Service
-// https://angular.io/guide/singleton-services
-
 /**
- * Die Service-Klasse zu B&uuml;cher wird zum "Root Application Injector"
- * hinzugefuegt und ist in allen Klassen der Webanwendung verfuegbar.
+ * read service as root application injector
  */
 @Injectable({ providedIn: 'root' })
 export class FahrzeugReadService {
     readonly #baseUrl = paths.api;
 
     /**
-     * @param httpClient injizierter Service HttpClient (von Angular)
+     * @param httpClient injected service httpClient
      * @return void
      */
     constructor(private readonly httpClient: HttpClient) {
@@ -79,62 +47,30 @@ export class FahrzeugReadService {
     }
 
     /**
-     * Buecher anhand von Suchkriterien suchen
-     * @param suchkriterien Die Suchkriterien
-     * @returns Gefundene Buecher oder Statuscode des fehlerhaften GET-Requests
+     * Search Fahrzeuge with search criteria
+     * @param suchkriterien search criteria
+     * @returns found Fahrzeuge or status code of the failed GET-Request
      */
     find(
         suchkriterien: Suchkriterien | undefined = undefined, // eslint-disable-line unicorn/no-useless-undefined
     ): Observable<Fahrzeug[] | FindError> {
-        log.debug('BuchReadService.find: suchkriterien=', suchkriterien);
-        // log.debug(
-        //     `BuchReadService.find: suchkriterien=${JSON.stringify(
-        //         suchkriterien,
-        //     )}`,
-        // );
+        log.debug('FahrzeugReadService.find: suchkriterien=', suchkriterien);
 
         const url = this.#baseUrl;
-        log.debug('BuchReadService.find: url=', url);
+        log.debug('FahrzeugReadService.find: url=', url);
 
-        // Query-Parameter ?titel=x&art=KINDLE&...
+        // query params
         const params = this.#suchkriterienToHttpParams(suchkriterien);
 
-        // Promise:
-        // - Einzelner Wert
-        // - Kein Cancel
-        //
-        // Observable aus RxJS:
-        // - die Werte werden "lazy" in einem Stream bereitgestellt
-        // - Operatoren: map, forEach, filter, ...
-        // - Ausfuehrung nur dann, wenn es einen Aufruf von subscribe() gibt
-        // - firstValueFrom() konvertiert den ersten Wert in ein Promise
-        // - Cancel ist moeglich
-        // https://stackoverflow.com/questions/37364973/what-is-the-difference-between-promises-and-observables
-
-        return (
-            this.httpClient
-                .get<FahrzeugeServer>(url, { params })
-
-                // pipe ist eine "pure" Funktion, die ein Observable in ein NEUES Observable transformiert
-                .pipe(
-                    // 1 Datensatz empfangen und danach implizites "unsubscribe"
-                    // entspricht take(1)
-                    first(),
-
-                    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-                    catchError((err: unknown, _$) =>
-                        of(this.#buildFindError(err as HttpErrorResponse)),
-                    ),
-
-                    // entweder Observable<BuecherServer> oder Observable<FindError>
-                    map(restResult => this.#toFahrzeugArrayOrError(restResult)),
-                )
+        return this.httpClient.get<FahrzeugeServer>(url, { params }).pipe(
+            first(),
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            catchError((err: unknown, _$) =>
+                of(this.#buildFindError(err as HttpErrorResponse)),
+            ),
+            // result is Observable<FahreugeServer> or Observable<FindError>
+            map(restResult => this.#toFahrzeugArrayOrError(restResult)),
         );
-
-        // Same-Origin-Policy verhindert Ajax-Datenabfragen an einen Server in
-        // einer anderen Domain. JSONP (= JSON mit Padding) ermoeglicht die
-        // Uebertragung von JSON-Daten ueber Domaingrenzen.
-        // Falls benoetigt, gibt es in Angular dafuer den Service Jsonp.
     }
 
     #toFahrzeugArrayOrError(
