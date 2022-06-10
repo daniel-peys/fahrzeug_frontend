@@ -6,6 +6,7 @@
 
 /* hamburger menu */
 
+/* stylelint-disable declaration-property-value-disallowed-list */
 .navbar-toggler {
   border: none;
 }
@@ -13,6 +14,6 @@
 .navbar-toggler:focus,
 .navbar-toggler:active,
 .navbar-toggler-icon:focus {
-  outline: none;
   box-shadow: none;
+  outline: none;
 }

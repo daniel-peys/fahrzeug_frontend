@@ -3,12 +3,7 @@
 import { AuthService, ROLLE_ADMIN } from '../../../auth/auth.service'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import { Component, Input, type OnInit } from '@angular/core';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import {
-    type Fahrzeug,
-    FahrzeugReadService,
-    FahrzeugWriteService,
-    RemoveError,
-} from '../../shared';
+import { type Fahrzeug, FahrzeugWriteService, RemoveError } from '../../shared';
 import { first, tap } from 'rxjs/operators';
 import { NgLocalization } from '@angular/common';
 import { Router } from '@angular/router'; // eslint-disable-line @typescript-eslint/consistent-type-imports
@@ -16,7 +11,7 @@ import { Subject } from 'rxjs';
 import log from 'loglevel';
 
 /**
- * Component for the Tag <code>hs-gefundene-buecher</code>, to show the waiting first and afterwards
+ * component for the Tag <code>hs-gefundene-buecher</code>, to show the waiting first and afterwards
  * the result of the search (found or error)
  */
 @Component({
@@ -55,7 +50,7 @@ export class GefundeneFahrzeugeComponent implements OnInit {
     }
 
     /**
-     * Show the details of the clicked fahrzeug
+     * show the details of the clicked fahrzeug
      * @param fahrzeug the selected fahrzeug
      */
     onClick(fahrzeug: Fahrzeug) {

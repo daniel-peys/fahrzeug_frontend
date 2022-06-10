@@ -1,12 +1,12 @@
 /* sticky footer */
 
 .footer {
+  background-color: var(--bg-color-secondary);
+  color: whitesmoke;
+  height: 60px;
   position: sticky;
   top: 100vh;
   width: 100%;
-  height: 60px;
-  background-color: var(--bg-color-secondary);
-  color: whitesmoke;
 }
 
 /* media queries */
