@@ -14,11 +14,8 @@ const routes: Routes = [
         component: HomeComponent,
     },
     {
-        path: 'buecher',
-        // Lazy Loading (statt Eager Loading) durch dynamische Imports (seit ES 2020)
-        // loadChildren statt component wie bei '/'
-        // zzgl. Preloading von sichtbaren Links (s.u.)
-        // https://angular.io/guide/lazy-loading-ngmodules
+        path: 'fahrzeuge',
+        // Lazy Loading
         loadChildren: () =>
             import('./fahrzeug/fahrzeug-routing.module').then(
                 m => m.FahrzeugRoutingModule,
@@ -27,8 +24,6 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    // https://angular.io/guide/router
-    // https://next.angular.io/api/router/RouterModule
     /* eslint-disable array-bracket-newline */
     imports: [
         RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),

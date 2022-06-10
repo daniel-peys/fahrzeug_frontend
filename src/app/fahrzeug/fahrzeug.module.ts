@@ -16,8 +16,7 @@
  */
 
 import { NgModule } from '@angular/core';
+import { SucheFahrzeugModule } from './suche-fahrzeug/suche-fahrzeuge.module';
 
-@NgModule({
-    imports: [],
-})
-export class BuchModule {}
+@NgModule({ imports: [SucheFahrzeugModule] })
+export class FahrzeugModule {}

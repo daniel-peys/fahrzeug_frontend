@@ -10,4 +10,4 @@ import { Title } from '@angular/platform-browser';
     declarations: [SucheFahrzeugeComponent],
     providers: [Title],
 })
-export class SucheBuecherModule {}
+export class SucheFahrzeugModule {}
