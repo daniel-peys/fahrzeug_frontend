@@ -1,28 +1,11 @@
-/*
- * Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
+import { Component, type OnInit } from '@angular/core';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import {
-    type Buch,
-    BuchReadService,
+    type Fahrzeug,
+    FahrzeugReadService,
     FindError,
     type Suchkriterien,
 } from '../shared';
-import { Component, type OnInit } from '@angular/core';
 import { first, tap } from 'rxjs/operators';
 import { HttpStatusCode } from '@angular/common/http';
 import { Title } from '@angular/platform-browser'; // eslint-disable-line @typescript-eslint/consistent-type-imports
@@ -38,22 +21,22 @@ import log from 'loglevel';
  * </ul>
  */
 @Component({
-    selector: 'hs-suche-buecher',
-    templateUrl: './suche-buecher.component.html',
+    selector: 'hs-suche-fahrzeuge',
+    templateUrl: './suche-fahrzeuge.component.html',
 })
-export class SucheFahrzeugComponent implements OnInit {
+export class SucheFahrzeugeComponent implements OnInit {
     waiting = false;
 
-    buecher: Buch[] = [];
+    fahrzeuge: Fahrzeug[] = [];
 
     errorMsg: string | undefined;
 
     // Parameter Properties (Empfehlung: Konstruktor nur fuer DI)
     constructor(
-        private readonly service: BuchReadService,
+        private readonly service: FahrzeugReadService,
         private readonly titleService: Title,
     ) {
-        log.debug('SucheBuecherComponent.constructor()');
+        log.debug('SucheFahrzeugeComponent.constructor()');
     }
 
     // Wird von Angular aufgerufen, wenn der DOM-Baum fertig ist,
@@ -73,11 +56,11 @@ export class SucheFahrzeugComponent implements OnInit {
      */
     suchen(suchkriterien: Suchkriterien) {
         log.debug(
-            'SucheBuecherComponent.suchen: suchkriterien=',
+            'SucheFahrzeugeComponent.suchen: suchkriterien=',
             suchkriterien,
         );
 
-        this.buecher = [];
+        this.fahrzeuge = [];
         this.errorMsg = undefined;
 
         this.waiting = true;
@@ -93,7 +76,7 @@ export class SucheFahrzeugComponent implements OnInit {
             .subscribe();
     }
 
-    #setProps(result: Buch[] | FindError) {
+    #setProps(result: Fahrzeug[] | FindError) {
         this.waiting = false;
 
         if (result instanceof FindError) {
@@ -101,20 +84,20 @@ export class SucheFahrzeugComponent implements OnInit {
             return;
         }
 
-        this.buecher = result;
-        log.debug('SucheBuecherComponent.#setProps: buecher=', this.buecher);
+        this.fahrzeuge = result;
+        log.debug('SucheBuecherComponent.#setProps: buecher=', this.fahrzeuge);
     }
 
     #handleFindError(err: FindError) {
         const { statuscode } = err;
         log.debug(
-            'SucheBuecherComponent.#handleError: statuscode=',
+            'SucheFahrzeugComponent.#handleError: statuscode=',
             statuscode,
         );
 
         switch (statuscode) {
             case HttpStatusCode.NotFound:
-                this.errorMsg = 'Keine Bücher gefunden.';
+                this.errorMsg = 'Keine Fahrzeuge gefunden.';
                 break;
             case HttpStatusCode.TooManyRequests:
                 this.errorMsg =
@@ -130,7 +113,7 @@ export class SucheFahrzeugComponent implements OnInit {
         }
 
         log.debug(
-            'SucheBuecherComponent.#setErrorMsg: errorMsg=',
+            'SucheFahrzeugeComponent.#setErrorMsg: errorMsg=',
             this.errorMsg,
         );
     }

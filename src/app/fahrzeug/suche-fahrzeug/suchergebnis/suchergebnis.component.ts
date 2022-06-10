@@ -16,7 +16,7 @@
  */
 
 import { Component, Input } from '@angular/core';
-import { type Buch } from '../../shared';
+import { type Fahrzeug } from '../../shared';
 import log from 'loglevel';
 
 /**
@@ -28,13 +28,8 @@ import log from 'loglevel';
     templateUrl: './suchergebnis.component.html',
 })
 export class SuchergebnisComponent {
-    // Im ganzen Beispiel: lokale Speicherung des Zustands und nicht durch z.B.
-    // eine Flux-Bibliothek wie beispielsweise Redux http://redux.js.org
-
-    // Property Binding: <hs-suchergebnis [buecher]="...">
-    // Decorator fuer ein Attribut. Siehe InputMetadata
     @Input()
-    buecher: Buch[] = [];
+    fahrzeuge: Fahrzeug[] = [];
 
     @Input()
     errorMsg: string | undefined;
