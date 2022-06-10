@@ -15,10 +15,10 @@
         <th>Kennzeichen</th>
         <th class="text-center">Fahrzeugtyp</th>
         <th>
-          <span class="visually-hidden">Spalte f&uuml;r Details</span>
+          <span class="visually-hidden">Spalte für Details</span>
         </th>
         <th *ngIf="isAdmin || (isAdmin$ | async)">
-          <span class="visually-hidden">Spalte f&uuml;r Entfernen</span>
+          <span class="visually-hidden">Spalte für Entfernen</span>
         </th>
       </thead>
       <tbody>
@@ -35,7 +35,7 @@
             </span>
           </td>
           <td>
-            <!-- Pfad /:id, in fahrzeug-routing.module.ts -->
+            <!-- path /:id, in fahrzeug-routing.module.ts -->
             <a
               [routerLink]="['..', fahrzeug.id]"
               [state]="{ fahrzeug }"
@@ -44,7 +44,6 @@
               <i class="material-icons show-details clickable">search</i>
             </a>
           </td>
-          <!-- implizites "unsubscribe()" durch async -->
           <td *ngIf="isAdmin || (isAdmin$ | async)">
             <span
               (click)="onRemove(fahrzeug)"
