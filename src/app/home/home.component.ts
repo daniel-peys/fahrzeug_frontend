@@ -29,6 +29,6 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.title.setTitle('Fahrzeuge | Home');
+        this.title.setTitle('Fahrzeug | Home');
     }
 }
