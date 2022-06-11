@@ -10,18 +10,17 @@
       autofocus
       matInput
     />
+    <div
+      class="invalid-feedback d-flex align-items-center"
+      *ngIf="kennzeichen.invalid && kennzeichen.touched && kennzeichen.errors"
+    >
+      <i class="material-icons">error</i>
+      <span class="ms-1" *ngIf="kennzeichen.errors['required']">
+        Ein Kennzeichen muss eingegeben werden.
+      </span>
+      <span class="ms-1" *ngIf="kennzeichen.errors['pattern']">
+        Falsche Kennzeichen-Syntax richtig wäre z.B D DE 23
+      </span>
+    </div>
   </mat-form-field>
-
-  <div
-    class="invalid-feedback"
-    *ngIf="kennzeichen.invalid && kennzeichen.touched && kennzeichen.errors"
-  >
-    <i class="material-icons">error</i>
-    <span class="ms-1" *ngIf="kennzeichen.errors['required']">
-      Ein Kennzeichen muss eingegeben werden.
-    </span>
-    <span class="ms-1" *ngIf="kennzeichen.errors['pattern']">
-      Falsche Kennzeichen-Syntax
-    </span>
-  </div>
 </div>

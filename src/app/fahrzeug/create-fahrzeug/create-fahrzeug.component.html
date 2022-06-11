@@ -1,9 +1,10 @@
-<div class="container w-75">
-  <div>
+<div class="w-75 d-flex flex-column align-items-center mx-auto mt-4 mb-4">
+  <div class="clickable d-flex align-items-center mb-3">
+    <i class="material-icons">local_shipping</i>
     <span class="ms-1">Neues Fahrzeug</span>
   </div>
 
-  <div>
+  <div class="container">
     <form [formGroup]="createForm" role="form" (submit)="onSubmit()">
       <div class="row has-warning mb-4" *ngIf="showWarning">
         <div class="col col-12 form-control-feedback">
@@ -32,25 +33,18 @@
         [createForm]="createForm"
       ></hs-create-fahrzeughalter>
 
-      <div class="row">
-        <div class="col offset-2 gy-3">
-          <!-- [disabled]="..." fuer Input (= Property Binding) -->
-          <button
-            type="submit"
-            class="btn btn-primary"
-            [disabled]="createForm.invalid"
-          >
-            <i class="material-icons">check</i>
-            <span class="ms-1">Jetzt anlegen</span>
-          </button>
-        </div>
-      </div>
+      <button
+        type="submit"
+        class="btn btn-tertiary d-flex align-items-center ms-1"
+        [disabled]="createForm.invalid"
+      >
+        <i class="material-icons">check</i>
+        <span class="ms-1">Jetzt anlegen</span>
+      </button>
     </form>
-
     <small>* sind Pflichtfelder</small>
   </div>
 </div>
-
 <div class="mt-3">
   <hs-error-message [text]="errorMsg"></hs-error-message>
 </div>

@@ -10,14 +10,15 @@
       [class.is-valid]="beschreibung.valid && beschreibung.touched"
       matInput
     />
+    <div
+      class="invalid-feedback d-flex align-items-center"
+      *ngIf="
+        beschreibung.invalid && beschreibung.touched && beschreibung.errors
+      "
+    >
+      <span class="ms-1" *ngIf="beschreibung.errors['maxlength']">
+        Eine Beschreibung darf maximal 40 Zeichen lang sein
+      </span>
+    </div>
   </mat-form-field>
-
-  <div
-    class="invalid-feedback"
-    *ngIf="beschreibung.invalid && beschreibung.touched && beschreibung.errors"
-  >
-    <span class="ms-1" *ngIf="beschreibung.errors['maxlength']">
-      Eine Beschreibung darf maximal 40 Zeichen lang sein
-    </span>
-  </div>
 </div>

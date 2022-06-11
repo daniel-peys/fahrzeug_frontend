@@ -9,17 +9,16 @@
       [class.is-valid]="vorname.valid && vorname.touched"
       matInput
     />
+    <div
+      class="invalid-feedback"
+      *ngIf="vorname.invalid && vorname.touched && vorname.errors"
+    >
+      <i class="material-icons">error</i>
+      <span class="ms-1" *ngIf="vorname.errors['required']">
+        Ein Vorname muss eingegeben werden.
+      </span>
+    </div>
   </mat-form-field>
-
-  <div
-    class="invalid-feedback"
-    *ngIf="vorname.invalid && vorname.touched && vorname.errors"
-  >
-    <i class="material-icons">error</i>
-    <span class="ms-1" *ngIf="vorname.errors['required']">
-      Ein Vorname muss eingegeben werden.
-    </span>
-  </div>
 </div>
 
 <div [formGroup]="createForm" class="row">
@@ -35,15 +34,14 @@
       [class.is-valid]="nachname.valid && nachname.touched"
       matInput
     />
+    <div
+      class="invalid-feedback d-flex align-items-center"
+      *ngIf="nachname.invalid && nachname.touched && nachname.errors"
+    >
+      <i class="material-icons">error</i>
+      <span class="ms-1" *ngIf="nachname.errors['required']">
+        Ein Nachname muss eingegeben werden.
+      </span>
+    </div>
   </mat-form-field>
-
-  <div
-    class="invalid-feedback"
-    *ngIf="nachname.invalid && nachname.touched && nachname.errors"
-  >
-    <i class="material-icons">error</i>
-    <span class="ms-1" *ngIf="nachname.errors['required']">
-      Ein Nachname muss eingegeben werden.
-    </span>
-  </div>
 </div>

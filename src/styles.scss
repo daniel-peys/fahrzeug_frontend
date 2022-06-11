@@ -50,6 +50,12 @@ mat-label {
   opacity: 0.8;
 }
 
+/* btn color */
+.btn-tertiary {
+  background-color: var(--bg-color-tertiary) !important;
+  color: whitesmoke !important;
+}
+
 /* shared media queries */
 
 @media only screen and (max-width: 600px) {

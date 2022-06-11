@@ -12,15 +12,16 @@
       <mat-option value="N">Nutzfahrzeug</mat-option>
       <mat-option value="P">PKW</mat-option>
     </mat-select>
-  </mat-form-field>
-
-  <div
-    class="invalid-feedback"
-    *ngIf="fahrzeugtype.invalid && fahrzeugtype.touched && fahrzeugtype.errors"
-  >
-    <i class="material-icons">error</i>
-    <div *ngIf="fahrzeugtype.errors['required']">
-      <span class="ms-1"> Ein Fahrzeugtyp ist erforderlich. </span>
+    <div
+      class="invalid-feedback d-flex align-items-center"
+      *ngIf="
+        fahrzeugtype.invalid && fahrzeugtype.touched && fahrzeugtype.errors
+      "
+    >
+      <i class="material-icons">error</i>
+      <span class="ms-1" *ngIf="fahrzeugtype.errors['required']">
+        Ein Fahrzeugtyp ist erforderlich.
+      </span>
     </div>
-  </div>
+  </mat-form-field>
 </div>
