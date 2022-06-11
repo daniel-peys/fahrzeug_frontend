@@ -1,0 +1,26 @@
+<div [formGroup]="createForm" class="row">
+  <mat-form-field appearance="fill">
+    <label>Fahrzeugtyp</label>
+    <mat-select
+      formControlName="fahrzeugtype"
+      required
+      [class.is-invalid]="fahrzeugtype.invalid && fahrzeugtype.touched"
+      [class.is-valid]="fahrzeugtype.valid && fahrzeugtype.touched"
+    >
+      <mat-option value="">Einen Verlag auswählen</mat-option>
+      <mat-option value="A">Anhänger</mat-option>
+      <mat-option value="N">Nutzfahrzeug</mat-option>
+      <mat-option value="P">PKW</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div
+    class="invalid-feedback"
+    *ngIf="fahrzeugtype.invalid && fahrzeugtype.touched && fahrzeugtype.errors"
+  >
+    <i class="material-icons">error</i>
+    <div *ngIf="fahrzeugtype.errors['required']">
+      <span class="ms-1"> Ein Fahrzeugtyp ist erforderlich. </span>
+    </div>
+  </div>
+</div>

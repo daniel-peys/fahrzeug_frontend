@@ -1,0 +1,49 @@
+<div [formGroup]="createForm" class="row">
+  <mat-form-field appearance="fill">
+    <mat-label for="vornameInput"> Vorname </mat-label>
+    <input
+      id="vornameInput"
+      placeholder="Vorname"
+      formControlName="vorname"
+      [class.is-invalid]="vorname.invalid && vorname.touched"
+      [class.is-valid]="vorname.valid && vorname.touched"
+      matInput
+    />
+  </mat-form-field>
+
+  <div
+    class="invalid-feedback"
+    *ngIf="vorname.invalid && vorname.touched && vorname.errors"
+  >
+    <i class="material-icons">error</i>
+    <span class="ms-1" *ngIf="vorname.errors['required']">
+      Ein Vorname muss eingegeben werden.
+    </span>
+  </div>
+</div>
+
+<div [formGroup]="createForm" class="row">
+  <mat-form-field appearance="fill">
+    <mat-label for="nachnameInput" class="col col-2 col-form-label gy-3">
+      Nachname
+    </mat-label>
+    <input
+      id="nachnameInput"
+      placeholder="Nachname"
+      formControlName="nachname"
+      [class.is-invalid]="nachname.invalid && nachname.touched"
+      [class.is-valid]="nachname.valid && nachname.touched"
+      matInput
+    />
+  </mat-form-field>
+
+  <div
+    class="invalid-feedback"
+    *ngIf="nachname.invalid && nachname.touched && nachname.errors"
+  >
+    <i class="material-icons">error</i>
+    <span class="ms-1" *ngIf="nachname.errors['required']">
+      Ein Nachname muss eingegeben werden.
+    </span>
+  </div>
+</div>

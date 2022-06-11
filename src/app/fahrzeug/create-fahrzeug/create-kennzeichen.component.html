@@ -1,0 +1,27 @@
+<div [formGroup]="createForm" class="row">
+  <mat-form-field appearance="fill">
+    <mat-label for="kennzeichenInput"> Kennzeichen </mat-label>
+    <input
+      id="kennzeichenInput"
+      placeholder="Kennzeichen"
+      formControlName="kennzeichen"
+      [class.is-invalid]="kennzeichen.invalid && kennzeichen.touched"
+      [class.is-valid]="kennzeichen.valid && kennzeichen.touched"
+      autofocus
+      matInput
+    />
+  </mat-form-field>
+
+  <div
+    class="invalid-feedback"
+    *ngIf="kennzeichen.invalid && kennzeichen.touched && kennzeichen.errors"
+  >
+    <i class="material-icons">error</i>
+    <span class="ms-1" *ngIf="kennzeichen.errors['required']">
+      Ein Kennzeichen muss eingegeben werden.
+    </span>
+    <span class="ms-1" *ngIf="kennzeichen.errors['pattern']">
+      Falsche Kennzeichen-Syntax
+    </span>
+  </div>
+</div>

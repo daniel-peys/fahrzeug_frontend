@@ -1,3 +1,11 @@
+/* variables */
+
+:root {
+  --bg-color-primary: #303030;
+  --bg-color-secondary: #454545;
+  --bg-color-tertiary: #e91e62;
+}
+
 /* general settings */
 
 *,
@@ -23,22 +31,13 @@ mat-label {
   color: whitesmoke !important;
 }
 
-/* button settings */
+/* shared button styles */
 
 .btn:focus,
 .btn:active {
-  outline: none !important;
-  box-shadow: none !important;
   border: none !important;
-  appearance: none !important;
-}
-
-/* variables */
-
-:root {
-  --bg-color-primary: #303030;
-  --bg-color-secondary: #454545;
-  --bg-color-tertiary: #e91e62;
+  box-shadow: none !important;
+  outline: none !important;
 }
 
 /* shared classes */
@@ -51,7 +50,7 @@ mat-label {
   opacity: 0.8;
 }
 
-/* media queries */
+/* shared media queries */
 
 @media only screen and (max-width: 600px) {
   .info-box {

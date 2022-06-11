@@ -1,0 +1,23 @@
+<div [formGroup]="createForm" class="row">
+  <mat-form-field appearance="fill">
+    <mat-label for="beschreibungInput"> Beschreibung </mat-label>
+    <input
+      id="beschreibungInput"
+      placeholder="Beschreibung"
+      autofocus
+      formControlName="beschreibung"
+      [class.is-invalid]="beschreibung.invalid && beschreibung.touched"
+      [class.is-valid]="beschreibung.valid && beschreibung.touched"
+      matInput
+    />
+  </mat-form-field>
+
+  <div
+    class="invalid-feedback"
+    *ngIf="beschreibung.invalid && beschreibung.touched && beschreibung.errors"
+  >
+    <span class="ms-1" *ngIf="beschreibung.errors['maxlength']">
+      Eine Beschreibung darf maximal 40 Zeichen lang sein
+    </span>
+  </div>
+</div>
