@@ -1,0 +1,11 @@
+<div class="row mt-2">
+  <label class="col col-md-3 col-lg-2"> Fahrzeugtyp </label>
+  <div class="col col-md-9 col-lg-10">
+    <span [ngSwitch]="fahrzeugtype">
+      <span *ngSwitchCase="'A'">Anhänger</span>
+      <span *ngSwitchCase="'N'">Nutzfahrzeug</span>
+      <span *ngSwitchCase="'P'">PKW</span>
+      <span *ngSwitchDefault>unbekannt</span>
+    </span>
+  </div>
+</div>

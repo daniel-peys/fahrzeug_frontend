@@ -12,11 +12,14 @@ body {
   background-color: var(--bg-color-primary) !important;
 }
 
-/* input settings */
+/* shared colors */
 
-mat-label,
+a,
+div,
 input,
-input::placeholder {
+input::placeholder,
+label,
+mat-label {
   color: whitesmoke !important;
 }
 

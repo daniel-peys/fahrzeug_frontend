@@ -1,0 +1,20 @@
+<div *ngIf="fahrzeug">
+  <hs-details-beschreibung
+    [beschreibung]="fahrzeug.beschreibung"
+  ></hs-details-beschreibung>
+  <hs-details-kennzeichen
+    [kennzeichen]="fahrzeug.kennzeichen"
+  ></hs-details-kennzeichen>
+  <hs-details-kilometerstand
+    [kilometerstand]="fahrzeug.kilometerstand"
+  ></hs-details-kilometerstand>
+  <hs-details-erstzulassung
+    [erstzulassung]="fahrzeug.erstzulassung"
+  ></hs-details-erstzulassung>
+  <hs-details-fahrzeugtyp
+    [fahrzeugtype]="fahrzeug.fahrzeugtype"
+  ></hs-details-fahrzeugtyp>
+  <hs-details-fahrzeughalter
+    [fahrzeughalter]="fahrzeug.fahrzeughalter"
+  ></hs-details-fahrzeughalter>
+</div>

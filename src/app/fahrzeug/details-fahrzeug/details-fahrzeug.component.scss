@@ -1,0 +1,13 @@
+/* tab background color */
+
+.nav-item > a {
+  background-color: var(--bg-color-tertiary);
+}
+
+/* media queries */
+
+@media only screen and(max-width: 600px) {
+  h4 {
+    font-size: 1.2rem;
+  }
+}
