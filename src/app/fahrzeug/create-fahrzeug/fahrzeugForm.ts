@@ -1,8 +1,8 @@
-import { type Fahrzeug, type FahrzeugShared } from '../shared';
+import { type Fahrzeug, type FahrzeugSharedWrite } from '../shared';
 import { Temporal } from '@js-temporal/polyfill';
 import log from 'loglevel';
 
-export interface FahrzeugForm extends FahrzeugShared {
+export interface FahrzeugForm extends FahrzeugSharedWrite {
     erstzulassung: Date;
 }
 

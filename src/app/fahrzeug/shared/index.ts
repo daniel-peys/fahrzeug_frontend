@@ -2,6 +2,7 @@ export {
     type Fahrzeugtyp,
     type Fahrzeug,
     type FahrzeugShared,
+    type FahrzeugSharedWrite,
 } from './fahrzeug';
 export {
     FahrzeugReadService,

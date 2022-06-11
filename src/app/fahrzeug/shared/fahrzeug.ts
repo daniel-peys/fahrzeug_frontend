@@ -22,9 +22,20 @@ export interface Fahrzeug {
 }
 
 /**
- * common data fields
+ * common data fields for reading
  */
 export interface FahrzeugShared {
+    beschreibung: string;
+    kennzeichen: string;
+    kilometerstand: number;
+    fahrzeugtype: Fahrzeugtyp;
+    fahrzeughalter: Fahrzeughalter;
+}
+
+/**
+ * common data fields for writing
+ */
+export interface FahrzeugSharedWrite {
     beschreibung: string;
     kennzeichen: string;
     kilometerstand: number;
