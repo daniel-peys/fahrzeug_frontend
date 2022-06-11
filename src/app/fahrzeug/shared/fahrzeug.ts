@@ -29,5 +29,6 @@ export interface FahrzeugShared {
     kennzeichen: string;
     kilometerstand: number;
     fahrzeugtype: Fahrzeugtyp;
-    fahrzeughalter: Fahrzeughalter;
+    vorname: string;
+    nachname: string;
 }

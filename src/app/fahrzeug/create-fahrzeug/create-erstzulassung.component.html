@@ -1,17 +1,24 @@
 <div [formGroup]="createForm" class="row">
-  <mat-form-field appearance="fill" class="example-form-field">
+  <mat-form-field appearance="fill">
     <mat-label>Wählen Sie ein Datum</mat-label>
     <input
       matInput
-      [matDatepicker]="datepicker"
+      [matDatepicker]="picker"
       formControlName="erstzulassung"
+      required
     />
-    <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
-    <mat-datepicker #datepicker>
-      <mat-datepicker-actions>
-        <button mat-button matDatepickerCancel class="btn">Cancel</button>
-        <button mat-raised-button matDatepickerApply class="btn">OK</button>
-      </mat-datepicker-actions>
-    </mat-datepicker>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <div
+      class="invalid-feedback d-flex align-items-center"
+      *ngIf="
+        erstzulassung.invalid && erstzulassung.touched && erstzulassung.errors
+      "
+    >
+      <i class="material-icons">error</i>
+      <span class="ms-1" *ngIf="erstzulassung.errors['required']">
+        Ein Datum muss eingegeben werden.
+      </span>
+    </div>
   </mat-form-field>
 </div>

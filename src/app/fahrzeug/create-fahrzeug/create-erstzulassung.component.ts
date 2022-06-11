@@ -13,9 +13,7 @@ export class CreateErstzulassungComponent implements OnInit {
     @Input()
     createForm!: FormGroup;
 
-    readonly today = new Date();
-
-    readonly erstzulassung = new FormControl(this.today);
+    readonly erstzulassung = new FormControl();
 
     ngOnInit() {
         log.debug('CreateErstzulassungComponent.ngOnInit');

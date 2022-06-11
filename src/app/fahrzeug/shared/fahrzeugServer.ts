@@ -48,7 +48,8 @@ export const toFahrzeug = (fahrzeugServer: FahrzeugServer, etag?: string) => {
         kilometerstand,
         erstzulassung,
         fahrzeugtype,
-        fahrzeughalter,
+        vorname,
+        nachname,
     } = fahrzeugServer;
 
     let datumTemporal: Temporal.PlainDate | undefined;
@@ -70,7 +71,10 @@ export const toFahrzeug = (fahrzeugServer: FahrzeugServer, etag?: string) => {
         kilometerstand,
         erstzulassung: datumTemporal,
         fahrzeugtype,
-        fahrzeughalter,
+        fahrzeughalter: {
+            vorname,
+            nachname,
+        },
         version,
     };
     log.debug('Fahrzeug.fromServer: fahrzeug=', fahrzeug);
@@ -92,6 +96,7 @@ export const toFahrzeugServer = (fahrzeug: Fahrzeug): FahrzeugServer => {
         kilometerstand: fahrzeug.kilometerstand,
         erstzulassung,
         fahrzeugtype: fahrzeug.fahrzeugtype,
-        fahrzeughalter: fahrzeug.fahrzeughalter,
+        vorname: fahrzeug.fahrzeughalter.vorname,
+        nachname: fahrzeug.fahrzeughalter.nachname,
     };
 };

@@ -20,7 +20,8 @@ export const toFahrzeug = (fahrzeugForm: FahrzeugForm) => {
         kilometerstand,
         erstzulassung,
         fahrzeugtype,
-        fahrzeughalter,
+        vorname,
+        nachname,
     } = fahrzeugForm;
 
     const erstzulassungTemporal = new Temporal.PlainDate(
@@ -36,7 +37,10 @@ export const toFahrzeug = (fahrzeugForm: FahrzeugForm) => {
         kilometerstand,
         fahrzeugtype,
         erstzulassung: erstzulassungTemporal,
-        fahrzeughalter,
+        fahrzeughalter: {
+            vorname,
+            nachname,
+        },
         version: 0,
     };
     log.debug('toFahrzeug: fahrzeug=', fahrzeug);
