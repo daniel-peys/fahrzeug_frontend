@@ -35,9 +35,9 @@ export class FahrzeugWriteService {
      * @param newFahreug the JSON-Object with a new book
      */
     save(fahrzeug: Fahrzeug): Observable<SaveError | string> {
-        log.debug('FahrzeugWriteService.save: buch=', fahrzeug);
+        log.debug('FahrzeugWriteService.save: fahreug=', fahrzeug);
         fahrzeug.erstzulassung = Temporal.Now.plainDateISO();
-        log.debug('FahrzeugWriteService.save: buch=', fahrzeug);
+        log.debug('FahrzeugWriteService.save: fahrzeug=', fahrzeug);
 
         /* eslint-disable @typescript-eslint/naming-convention */
         const headers = new HttpHeaders({
@@ -94,7 +94,7 @@ export class FahrzeugWriteService {
      * @param fahrzeug the JSON-Object with the new Fahrzeugdaten
      */
     update(fahrzeug: Fahrzeug): Observable<Fahrzeug | UpdateError> {
-        log.debug('FahrzeugWriteService.update: buch=', fahrzeug);
+        log.debug('FahrzeugWriteService.update: fahrzeug=', fahrzeug);
 
         const { id, version, ...fahrzeugDTO } = fahrzeug;
         if (version === undefined) {
@@ -113,7 +113,7 @@ export class FahrzeugWriteService {
         /* eslint-enable @typescript-eslint/naming-convention */
         log.debug('FahrzeugWriteService.update: headers=', headers);
 
-        log.debug('FahrzeugWriteService.update: buchDTO=', fahrzeugDTO);
+        log.debug('FahrzeugWriteService.update: fahrzeugDTO=', fahrzeugDTO);
         return this.httpClient
             .put(url, fahrzeugDTO, { headers, observe: 'response' })
             .pipe(
@@ -121,7 +121,7 @@ export class FahrzeugWriteService {
                 // eslint-disable-next-line @typescript-eslint/no-unused-vars
                 catchError((err: unknown, _$) => {
                     const errResponse = err as HttpErrorResponse;
-                    log.debug('BuchWriteService.update: err=', err);
+                    log.debug('FahrzeugWriteService.update: err=', err);
                     return of(new UpdateError(errResponse.status, errResponse));
                 }),
 
@@ -167,7 +167,7 @@ export class FahrzeugWriteService {
     remove(
         fahrzeug: Fahrzeug,
     ): Observable<Record<string, unknown> | RemoveError> {
-        log.debug('FahrzeugWriteService.remove: buch=', fahrzeug);
+        log.debug('FahrzeugWriteService.remove: fahrzeug=', fahrzeug);
         const url = `${this.#baseUrl}/${fahrzeug.id}`;
 
         return this.httpClient.delete(url).pipe(

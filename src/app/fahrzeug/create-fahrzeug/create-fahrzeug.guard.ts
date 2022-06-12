@@ -20,7 +20,7 @@ export class CreateFahrzeugGuard
     }
 
     canDeactivate(
-        createBuch: CreateFahrzeugComponent,
+        createFahrzeug: CreateFahrzeugComponent,
         _: ActivatedRouteSnapshot, // eslint-disable-line @typescript-eslint/no-unused-vars
         __: RouterStateSnapshot, // eslint-disable-line @typescript-eslint/no-unused-vars, @typescript-eslint/naming-convention
     ):
@@ -28,12 +28,12 @@ export class CreateFahrzeugGuard
         | Promise<UrlTree | boolean>
         | UrlTree
         | boolean {
-        if (createBuch.fertig) {
+        if (createFahrzeug.fertig) {
             return true;
         }
 
-        createBuch.showWarning = true;
-        createBuch.fertig = true;
+        createFahrzeug.showWarning = true;
+        createFahrzeug.fertig = true;
         log.debug('CreateFahrzeugGuard.canDeactivate: Verlassen der Seite');
         return false;
     }
