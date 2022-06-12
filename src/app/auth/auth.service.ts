@@ -76,11 +76,10 @@ export class AuthService {
     }
 
     /**
-     * @return String fuer JWT oder Basic-Authentifizierung
+     * @return string for JWT or Basic-Authentifizierung
      */
     get authorization() {
         return this.storageService.authorization;
-        //  return 'Basic YWRtaW46cA==';
     }
 
     /**

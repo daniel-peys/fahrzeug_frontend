@@ -27,7 +27,7 @@ export class FahrzeugWriteService {
      * @return void
      */
     constructor(private readonly httpClient: HttpClient) {
-        log.debug('BuchWriteService.constructor: baseUrl=', this.#baseUrl);
+        log.debug('FahrzeugWriteService.constructor: baseUrl=', this.#baseUrl);
     }
 
     /**
@@ -35,9 +35,9 @@ export class FahrzeugWriteService {
      * @param newFahreug the JSON-Object with a new book
      */
     save(fahrzeug: Fahrzeug): Observable<SaveError | string> {
-        log.debug('BuchWriteService.save: buch=', fahrzeug);
+        log.debug('FahrzeugWriteService.save: buch=', fahrzeug);
         fahrzeug.erstzulassung = Temporal.Now.plainDateISO();
-        log.debug('BuchWriteService.save: buch=', fahrzeug);
+        log.debug('FahrzeugWriteService.save: buch=', fahrzeug);
 
         /* eslint-disable @typescript-eslint/naming-convention */
         const headers = new HttpHeaders({
@@ -74,7 +74,7 @@ export class FahrzeugWriteService {
 
         const response = result;
         log.debug(
-            'BuchWriteService.#mapSaveResultToId: map: response',
+            'FahrzeugWriteService.#mapSaveResultToId: map: response',
             response,
         );
 
@@ -167,7 +167,7 @@ export class FahrzeugWriteService {
     remove(
         fahrzeug: Fahrzeug,
     ): Observable<Record<string, unknown> | RemoveError> {
-        log.debug('BuchWriteService.remove: buch=', fahrzeug);
+        log.debug('FahrzeugWriteService.remove: buch=', fahrzeug);
         const url = `${this.#baseUrl}/${fahrzeug.id}`;
 
         return this.httpClient.delete(url).pipe(
