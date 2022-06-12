@@ -60,7 +60,7 @@ export class UpdateFahrzeugComponent implements OnInit {
     }
 
     /**
-     * Write back the recent data for the viewed fahrzeug-object
+     * write back the recent data for the viewed fahrzeug-object
      * @return false to cancel the event
      */
     onSubmit() {

@@ -20,7 +20,7 @@ export class UpdateKennzeichenComponent implements OnInit {
 
     ngOnInit() {
         log.debug(
-            'UpdateTitelComponent.ngOnInit: currentValue=',
+            'UpdateKennzeichenComponent.ngOnInit: currentValue=',
             this.currentValue,
         );
         this.kennzeichen = new FormControl(this.currentValue, [

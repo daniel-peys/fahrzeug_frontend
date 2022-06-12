@@ -2,13 +2,13 @@ import { type Fahrzeughalter } from './fahrzeughalter';
 import { type Temporal } from '@js-temporal/polyfill';
 
 /**
- * Alias-Type for valid strings for Fahrzeugtypen.
+ * alias-type for valid strings for Fahrzeugtypen.
  */
 export type Fahrzeugtyp = 'A' | 'N' | 'P';
 
 /**
- * Model as Plain-Old-JavaScript-Object (POJO) for the data and
- * Functions for queries and changes.
+ * model as Plain-Old-JavaScript-Object (POJO) for the data and
+ * functions for queries and changes.
  */
 export interface Fahrzeug {
     id?: string;

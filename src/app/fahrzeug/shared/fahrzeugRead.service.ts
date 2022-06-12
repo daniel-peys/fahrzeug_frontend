@@ -43,11 +43,11 @@ export class FahrzeugReadService {
      * @return void
      */
     constructor(private readonly httpClient: HttpClient) {
-        log.debug('BuchReadService.constructor: baseUrl=', this.#baseUrl);
+        log.debug('FahrzeugReadService.constructor: baseUrl=', this.#baseUrl);
     }
 
     /**
-     * Search Fahrzeuge with search criteria
+     * search Fahrzeuge with search criteria
      * @param suchkriterien search criteria
      * @returns found Fahrzeuge or status code of the failed GET-Request
      */
@@ -96,7 +96,7 @@ export class FahrzeugReadService {
     }
 
     /**
-     * Search one Fahrzeug with the ID
+     * search one Fahrzeug with the ID
      * @param id the ID of the fahrzeug
      */
     findById(id: string | undefined): Observable<Fahrzeug | FindError> {
@@ -145,14 +145,14 @@ export class FahrzeugReadService {
         }
 
         const etag = headers.get('ETag') ?? undefined;
-        log.debug('BuchReadService.#toBuchOrError: etag=', etag);
+        log.debug('FahrzeugReadService.#toBuchOrError: etag=', etag);
 
         const fahrzeug = toFahrzeug(body, etag);
         return fahrzeug;
     }
 
     /**
-     * Convert search criteria to request-params
+     * convert search criteria to request-params
      * @param searchCriteria search critera for the GET-Request.
      * @return params for the GET-Request
      */
@@ -205,7 +205,7 @@ export class FahrzeugReadService {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         const { status, error } = err;
         log.debug(
-            'BuchReadService.#buildFindError: status / Response-Body=',
+            'FahrzeugReadService.#buildFindError: status / Response-Body=',
             status,
             error,
         );

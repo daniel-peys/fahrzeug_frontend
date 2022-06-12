@@ -1,5 +1,4 @@
 import { Component, Input, type OnInit } from '@angular/core';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { FormControl, type FormGroup } from '@angular/forms';
 import log from 'loglevel';
 

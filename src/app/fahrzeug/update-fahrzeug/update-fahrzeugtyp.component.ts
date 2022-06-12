@@ -21,7 +21,7 @@ export class UpdateFahrzeugtypComponent implements OnInit {
 
     ngOnInit() {
         log.debug(
-            'UpdateVerlagComponent.ngOnInit: currentValue=',
+            'UpdateFahrzeugtypComponent.ngOnInit: currentValue=',
             this.currentValue,
         );
         this.fahrzeugtype = new FormControl(this.currentValue);

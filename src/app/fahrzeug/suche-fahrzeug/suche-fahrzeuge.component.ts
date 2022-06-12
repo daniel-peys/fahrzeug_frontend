@@ -65,7 +65,7 @@ export class SucheFahrzeugeComponent implements OnInit {
         }
 
         this.fahrzeuge = result;
-        log.debug('SucheBuecherComponent.#setProps: buecher=', this.fahrzeuge);
+        log.debug('SucheFahrzeugComponent.#setProps: buecher=', this.fahrzeuge);
     }
 
     #handleFindError(err: FindError) {

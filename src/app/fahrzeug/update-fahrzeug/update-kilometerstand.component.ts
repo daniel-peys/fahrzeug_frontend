@@ -25,7 +25,7 @@ export class UpdateKilometerstandComponent implements OnInit {
 
     ngOnInit() {
         log.debug(
-            'UpdateRatingComponent.ngOnInit: currentValue=',
+            'UpdateKilometerstandComponent.ngOnInit: currentValue=',
             this.currentValue,
         );
         this.kilometerstand = new FormControl(this.currentValue, [

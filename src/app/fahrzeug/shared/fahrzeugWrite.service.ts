@@ -16,7 +16,7 @@ import { paths } from '../../shared';
 import { toFahrzeugServer } from './fahrzeugServer';
 
 /**
- * The service class becomes a root application injector
+ * the service class becomes a root application injector
  */
 @Injectable({ providedIn: 'root' })
 export class FahrzeugWriteService {
@@ -31,7 +31,7 @@ export class FahrzeugWriteService {
     }
 
     /**
-     * Create a new fahrzeug
+     * create a new fahrzeug
      * @param newFahreug the JSON-Object with a new book
      */
     save(fahrzeug: Fahrzeug): Observable<SaveError | string> {
@@ -90,7 +90,7 @@ export class FahrzeugWriteService {
     }
 
     /**
-     * Update a fahrzeug
+     * update a fahrzeug
      * @param fahrzeug the JSON-Object with the new Fahrzeugdaten
      */
     update(fahrzeug: Fahrzeug): Observable<Fahrzeug | UpdateError> {
@@ -161,7 +161,7 @@ export class FahrzeugWriteService {
     }
 
     /**
-     * Delete a fahrzeug
+     * delete a fahrzeug
      * @param fahrzug the JSON-Object with the fahrzeug
      */
     remove(
