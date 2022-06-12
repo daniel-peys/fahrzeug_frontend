@@ -1,6 +1,13 @@
-<section class="mt-1 ms-1" *ngIf="fahrzeug">
-  <h4>Fahrzeug {{ fahrzeug.id }}:</h4>
-  <div class="mt-2 ms-2">
+<section
+  class="w-75 d-flex flex-column align-items-center mx-auto mt-4 mb-4"
+  *ngIf="fahrzeug"
+>
+  <div class="d-flex align-items-center mb-3">
+    <i class="material-icons">local_shipping</i>
+    <span class="ms-1">Fahrzeug {{ fahrzeug.id }}:</span>
+  </div>
+
+  <div class="container">
     <form [formGroup]="updateForm" role="form" (submit)="onSubmit()">
       <hs-update-kennzeichen
         [updateForm]="updateForm"
@@ -24,19 +31,14 @@
         [currentValueNachname]="fahrzeug.fahrzeughalter.nachname"
       ></hs-update-fahrzeughalter>
 
-      <div class="row">
-        <div class="col offset-2 gy-3">
-          <!-- form.pristine ist das Gegenteil von form.dirty -->
-          <button
-            type="submit"
-            class="btn btn-primary"
-            [disabled]="updateForm.pristine || updateForm.invalid"
-          >
-            <i class="material-icons">check</i>
-            <span class="ms-1">Stammdaten aktualisieren</span>
-          </button>
-        </div>
-      </div>
+      <button
+        type="submit"
+        class="btn btn-tertiary d-flex align-items-center ms-1"
+        [disabled]="updateForm.pristine || updateForm.invalid"
+      >
+        <i class="material-icons">check</i>
+        <span class="ms-1">Stammdaten aktualisieren</span>
+      </button>
     </form>
   </div>
 </section>

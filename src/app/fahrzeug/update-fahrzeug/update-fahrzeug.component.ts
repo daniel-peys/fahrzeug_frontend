@@ -103,6 +103,7 @@ export class UpdateFahrzeugComponent implements OnInit {
                 tap(result => this.#handleUpdateResult(result)),
             )
             .subscribe({ next: () => this.#navigateHome() });
+
         return false;
     }
 
