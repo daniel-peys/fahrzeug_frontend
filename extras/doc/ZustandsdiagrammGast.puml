@@ -1,0 +1,30 @@
+/'
+    <Ald> + d für die Vorschau
+'/
+
+@startuml zustandsdiagramm
+hide empty description
+[*] --> index.html
+state index.html
+index.html -down-> suche.html : suchkriterien
+
+state suche.html
+suche.html -down-> waiting.html
+
+state waiting.html
+waiting.html -down-> suchergebnis.html
+
+state suchergebnis.html
+suchergebnis.html -left-> error_msg.html
+suchergebnis.html -right-> gefundende_fahrzeuge.html
+
+state error_msg.html
+error_msg.html -down-> [*]
+
+state gefundende_fahrzeuge.html
+gefundende_fahrzeuge.html -down-> details_fahrzeuge.html : Fahrzeug auswählen
+
+state details_fahrzeuge.html
+details_fahrzeuge.html -left-> [*]
+
+@enduml
