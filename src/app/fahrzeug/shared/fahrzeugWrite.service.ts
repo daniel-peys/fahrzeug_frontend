@@ -27,7 +27,7 @@ export class FahrzeugWriteService {
      * @return void
      */
     constructor(private readonly httpClient: HttpClient) {
-        log.debug('BuchWriteService.constructor: baseUrl=', this.#baseUrl);
+        log.debug('FahrzeugWriteService.constructor: baseUrl=', this.#baseUrl);
     }
 
     /**
@@ -35,7 +35,7 @@ export class FahrzeugWriteService {
      * @param newFahreug the JSON-Object with a new book
      */
     save(fahrzeug: Fahrzeug): Observable<SaveError | string> {
-        log.debug('BuchWriteService.save: buch=', fahrzeug);
+        log.debug('FahrzeugWriteService.save: buch=', fahrzeug);
         fahrzeug.erstzulassung = Temporal.Now.plainDateISO();
         log.debug('BuchWriteService.save: buch=', fahrzeug);
 
