@@ -1,5 +1,5 @@
 <div class="w-75 d-flex flex-column align-items-center mx-auto mt-4 mb-4">
-  <div class="clickable d-flex align-items-center mb-3">
+  <div class="clickable d-flex align-items-center mb-3 header-box">
     <i class="material-icons">local_shipping</i>
     <span class="ms-1">Neues Fahrzeug</span>
   </div>
@@ -8,7 +8,7 @@
     <form [formGroup]="createForm" role="form" (submit)="onSubmit()">
       <div class="row has-warning mb-4" *ngIf="showWarning">
         <div class="col col-12 form-control-feedback">
-          <span class="alert alert-warning">
+          <span class="alert bg-danger d-flex align-items-center info-box">
             <i class="material-icons">warning</i>
             <strong class="text-help ms-1">
               Wenn Sie die Seite jetzt verlassen, verlieren Sie Ihre
@@ -42,7 +42,7 @@
         <span class="ms-1">Jetzt anlegen</span>
       </button>
     </form>
-    <small>* sind Pflichtfelder</small>
+    <small class="info-box">* sind Pflichtfelder</small>
   </div>
 </div>
 <div class="mt-3">

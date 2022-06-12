@@ -8,6 +8,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-create-fahrzeugtyp',
     templateUrl: './create-fahrzeugtyp.component.html',
+    styleUrls: ['./create-fahrzeugtyp.component.scss'],
 })
 export class CreateFahrzeugtypComponent implements OnInit {
     @Input()

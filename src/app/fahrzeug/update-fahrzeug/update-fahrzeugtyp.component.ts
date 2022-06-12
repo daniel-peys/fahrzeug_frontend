@@ -9,6 +9,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-update-fahrzeugtyp',
     templateUrl: './update-fahrzeugtyp.component.html',
+    styleUrls: ['./update-fahrzeugtyp.component.scss'],
 })
 export class UpdateFahrzeugtypComponent implements OnInit {
     @Input()

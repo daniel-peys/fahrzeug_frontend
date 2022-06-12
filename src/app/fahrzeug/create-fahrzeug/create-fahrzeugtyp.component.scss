@@ -1,0 +1,6 @@
+/* override colors of the mat-select-value */
+
+::ng-deep .mat-select-value,
+::ng-deep .mat-option {
+  color: whitesmoke;
+}
