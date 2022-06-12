@@ -5,7 +5,7 @@ import { type Suchkriterien } from '../../shared';
 import log from 'loglevel';
 
 /**
- * Component for the tag <code>hs-suchformular</code>
+ * component for the tag <code>hs-suchformular</code>
  */
 @Component({
     selector: 'hs-suchformular',

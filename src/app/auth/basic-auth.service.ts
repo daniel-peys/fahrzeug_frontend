@@ -65,7 +65,7 @@ export class BasicAuthService {
             .pipe(
                 first(),
                 catchError((err: unknown) => {
-                    log.debug('JwtService.login: err=', err);
+                    log.debug('BasicAuthService.login: err=', err);
                     return of(err as HttpErrorResponse);
                 }),
 
@@ -87,7 +87,7 @@ export class BasicAuthService {
         log.debug('BasicAuthService.login: body', body);
         if (!ok || body === null) {
             const { statusText } = result;
-            log.error('JwtService.login: statusText', statusText);
+            log.error('BasicAuthService.login: statusText', statusText);
             return;
         }
 

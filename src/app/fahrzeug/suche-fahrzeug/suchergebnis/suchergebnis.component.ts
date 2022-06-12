@@ -3,7 +3,7 @@ import { type Fahrzeug } from '../../shared';
 import log from 'loglevel';
 
 /**
- * Component for the tag <code>hs-suchergebnis</code>, to show the result of the search
+ * component for the tag <code>hs-suchergebnis</code>, to show the result of the search
  */
 @Component({
     selector: 'hs-suchergebnis',
