@@ -7,7 +7,7 @@ interface Link {
 }
 
 export interface FahrzeugServer extends FahrzeugShared {
-    erstzulassung?: string;
+    erstzulassung: string;
     // eslint-disable-next-line @typescript-eslint/naming-convention
     _links?: {
         self: Link;
@@ -51,19 +51,13 @@ export const toFahrzeug = (fahrzeugServer: FahrzeugServer, etag?: string) => {
         fahrzeughalter,
     } = fahrzeugServer;
 
-    let datumTemporal: Temporal.PlainDate | undefined;
-
-    if (erstzulassung !== undefined) {
-        const [yearStr, monthStr, dayStr] = erstzulassung
-            .replace(/T.*/gu, '')
-            .split('-');
-        const year = Number(yearStr);
-        const month = Number(monthStr);
-        const day = Number(dayStr);
-        datumTemporal = new Temporal.PlainDate(year, month, day);
-    }
-
-    const { vorname, nachname } = fahrzeughalter;
+    const [yearStr, monthStr, dayStr] = erstzulassung
+        .replace(/T.*/gu, '')
+        .split('-');
+    const year = Number(yearStr);
+    const month = Number(monthStr);
+    const day = Number(dayStr);
+    const datumTemporal = new Temporal.PlainDate(year, month, day);
 
     const fahrzeug: Fahrzeug = {
         id,
@@ -72,7 +66,7 @@ export const toFahrzeug = (fahrzeugServer: FahrzeugServer, etag?: string) => {
         kilometerstand,
         erstzulassung: datumTemporal,
         fahrzeugtype,
-        fahrzeughalter: { vorname, nachname },
+        fahrzeughalter,
         version,
     };
     log.debug('Fahrzeug.fromServer: fahrzeug=', fahrzeug);
@@ -84,10 +78,7 @@ export const toFahrzeug = (fahrzeugServer: FahrzeugServer, etag?: string) => {
  * @return the JSON-Objet for the RESTful Web Service
  */
 export const toFahrzeugServer = (fahrzeug: Fahrzeug): FahrzeugServer => {
-    const erstzulassung =
-        fahrzeug.erstzulassung === undefined
-            ? undefined
-            : fahrzeug.erstzulassung.toString();
+    const erstzulassung = fahrzeug.erstzulassung.toString();
     return {
         beschreibung: fahrzeug.beschreibung,
         kennzeichen: fahrzeug.kennzeichen,
