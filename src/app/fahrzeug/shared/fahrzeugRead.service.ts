@@ -77,7 +77,7 @@ export class FahrzeugReadService {
         restResult: FahrzeugeServer | FindError,
     ): Fahrzeug[] | FindError {
         log.debug(
-            'FahrzeugReadService.#toBuchArrayOrError: restResult=',
+            'FahrzeugReadService.#toFahrzeugArrayOrError: restResult=',
             restResult,
         );
         if (restResult instanceof FindError) {
@@ -89,7 +89,7 @@ export class FahrzeugReadService {
             toFahrzeug(fahrzeugServer),
         );
         log.debug(
-            'FahrzeugReadService.#toBuchArrayOrError: fahrzeuge=',
+            'FahrzeugReadService.#toFahrzeugArrayOrError: fahrzeuge=',
             fahrzeuge,
         );
         return fahrzeuge;
@@ -126,7 +126,7 @@ export class FahrzeugReadService {
                         const errResponse = err as HttpErrorResponse;
                         return of(this.#buildFindError(errResponse));
                     }),
-                    // Observable<HttpResponse<BuchServer>> or Observable<FindError>
+                    // Observable<HttpResponse<FahrzeugServer>> or Observable<FindError>
                     map(restResult => this.#toFahrzeugOrError(restResult)),
                 )
         );
@@ -145,7 +145,7 @@ export class FahrzeugReadService {
         }
 
         const etag = headers.get('ETag') ?? undefined;
-        log.debug('FahrzeugReadService.#toBuchOrError: etag=', etag);
+        log.debug('FahrzeugReadService.#toFahrzeugOrError: etag=', etag);
 
         const fahrzeug = toFahrzeug(body, etag);
         return fahrzeug;
