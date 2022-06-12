@@ -8,6 +8,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-create-erstzulassung',
     templateUrl: './create-erstzulassung.component.html',
+    styleUrls: ['./create-erstzulassung.component.scss'],
 })
 export class CreateErstzulassungComponent implements OnInit {
     @Input()

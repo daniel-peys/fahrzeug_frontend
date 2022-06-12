@@ -1,7 +1,6 @@
-/* override angular material select value color */
+/* override colors of the mat-select-value */
 
-/* stylelint-disable selector-pseudo-element-no-unknown */
-
-::ng-deep .mat-select-value {
+::ng-deep .mat-select-value,
+::ng-deep .mat-option {
   color: whitesmoke;
 }
