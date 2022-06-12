@@ -1,49 +1,41 @@
-/*
- * Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 import { Component, Input, type OnInit } from '@angular/core';
-import { FormControl, type FormGroup, Validators } from '@angular/forms';
-import { type Fahrzeughalter } from '../shared/fahrzeughalter';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import { FormControl, type FormGroup } from '@angular/forms';
 import log from 'loglevel';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-update-fahrzeughalter</code>
+ * component for the tag <code>hs-update-titel</code>
  */
 @Component({
     selector: 'hs-update-fahrzeughalter',
     templateUrl: './update-fahrzeughalter.component.html',
 })
-export class UpdateArtComponent implements OnInit {
-    // <hs-update-fahrzeughalter [form]="form" [currentValue]="...">
+export class UpdateFahrzeughalterComponent implements OnInit {
     @Input()
     updateForm!: FormGroup;
 
     @Input()
-    currentValue!: Fahrzeughalter;
+    currentValueVorname!: string;
 
-    fahrzeughalter!: FormControl;
+    @Input()
+    currentValueNachname!: string;
+
+    vorname!: FormControl;
+
+    nachname!: FormControl;
 
     ngOnInit() {
         log.debug(
-            'UpdateArtComponent.ngOnInit: currentValue=',
-            this.currentValue,
+            'UpdateVornameComponent.ngOnInit: currentValue=',
+            this.currentValueVorname,
         );
-        // siehe formControlName innerhalb @Component({templateUrl: ...})
-        this.fahrzeughalter = new FormControl(this.currentValue, Validators.required);
-        this.updateForm.addControl('fahrzeughalter', this.fahrzeughalter);
+        log.debug(
+            'UpdateNachnameComponent.ngOnInit: currentValue=',
+            this.currentValueNachname,
+        );
+        this.vorname = new FormControl(this.currentValueVorname);
+        this.nachname = new FormControl(this.currentValueNachname);
+        this.updateForm.addControl('vorname', this.vorname);
+        this.updateForm.addControl('nachname', this.nachname);
     }
 }

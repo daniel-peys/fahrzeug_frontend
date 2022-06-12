@@ -1,0 +1,30 @@
+<div [formGroup]="updateForm" class="row">
+  <mat-form-field appearance="fill">
+    <mat-label for="kilometerstandUpdate">Kilometerstand</mat-label>
+    <input
+      id="kilometerstandUpdate"
+      placeholder="Kilomerstand des Fahrzeugs"
+      type="number"
+      formControlName="kilometerstand"
+      [class.is-invalid]="kilometerstand.invalid && kilometerstand.touched"
+      [class.is-valid]="kilometerstand.valid && kilometerstand.touched"
+      matInput
+    />
+    <div
+      class="invalid-feedback d-flex align-items-center"
+      *ngIf="
+        kilometerstand.invalid &&
+        kilometerstand.touched &&
+        kilometerstand.errors
+      "
+    >
+      <i class="material-icons">error</i>
+      <span class="ms-1" *ngIf="kilometerstand.errors['min']">
+        Der Kilometerstand darf nicht kleiner 0 sein
+      </span>
+      <span class="ms-1" *ngIf="kilometerstand.errors['max']">
+        Der Kilometerstand darf nicht größer 9999999 sein
+      </span>
+    </div>
+  </mat-form-field>
+</div>

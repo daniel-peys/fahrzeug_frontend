@@ -1,41 +1,22 @@
-/*
- * Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 import { ActivatedRoute, Router } from '@angular/router'; // eslint-disable-line @typescript-eslint/consistent-type-imports
-/* eslint-disable @typescript-eslint/consistent-type-imports */
+import { Component, type OnInit } from '@angular/core';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import {
     type Fahrzeug,
-    type Fahrzeugtyp,
     FahrzeugReadService,
     FahrzeugWriteService,
+    type Fahrzeugtyp,
     FindError,
     UpdateError,
 } from '../shared';
-/* eslint-enable @typescript-eslint/consistent-type-imports */
-import { Component, type OnInit } from '@angular/core';
 import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
 import { first, tap } from 'rxjs/operators';
 import { FormGroup } from '@angular/forms';
 import { Title } from '@angular/platform-browser'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import log from 'loglevel';
-import { Fahrzeughalter } from '../shared/fahrzeughalter';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-update-fahrzeug</code>
+ * component for the tag <code>hs-update-buch</code>
  */
 @Component({
     selector: 'hs-update-fahrzeug',
@@ -60,7 +41,7 @@ export class UpdateFahrzeugComponent implements OnInit {
     }
 
     ngOnInit() {
-        // Pfad-Parameter aus /fahrzeuge/:id/update
+        // path params from /fahrzeuge/:id/update
         const id = this.route.snapshot.paramMap.get('id') ?? undefined;
 
         this.readService
@@ -69,37 +50,50 @@ export class UpdateFahrzeugComponent implements OnInit {
                 first(),
                 tap(result => {
                     this.#setProps(result);
-                    log.debug('UpdateFahrzeugComponent.ngOnInit: fahrzeug=', this.fahrzeug);
+                    log.debug(
+                        'UpdateFahrzeugComponent.ngOnInit: fahrzeug=',
+                        this.fahrzeug,
+                    );
                 }),
             )
             .subscribe();
     }
 
     /**
-     * Die aktuellen Stammdaten f&uuml;r das angezeigte Fahrzeug-Objekt
-     * zur&uuml;ckschreiben.
-     * @return false, um das durch den Button-Klick ausgel&ouml;ste Ereignis
-     *         zu konsumieren.
+     * Write back the recent data for the viewed fahrzeug-object
+     * @return false to cancel the event
      */
     onSubmit() {
         if (this.updateForm.pristine || this.fahrzeug === undefined) {
-            log.debug('UpdateFahrzeugComponent.onSubmit: keine Aenderungen');
+            log.debug('UpdateFahrzeugComponent.onSubmit: keine Änderungen');
             return;
         }
 
-        const { kennzeichen } = this.updateForm.value as { kennzeichen: string };
-        const { fahrzeugtype } = this.updateForm.value as {
-            fahrzeugtype: Fahrzeugtyp ;
+        const { beschreibung } = this.updateForm.value as {
+            beschreibung: string;
         };
-        const { kilometerstand } = this.updateForm.value as { kilometerstand: number };
-        const { isbn } = this.updateForm.value as { isbn: string };
+        const { kennzeichen } = this.updateForm.value as {
+            kennzeichen: string;
+        };
+        const { kilometerstand } = this.updateForm.value as {
+            kilometerstand: number;
+        };
+        const { fahrzeugtype } = this.updateForm.value as {
+            fahrzeugtype: Fahrzeugtyp;
+        };
+        const { vorname } = this.updateForm.value as { vorname: string };
+        const { nachname } = this.updateForm.value as { nachname: string };
 
         const { fahrzeug, service } = this;
 
-
-        fahrzeug.kennzeichen = kennzeichen;
+        // erstzulassung can't be changed in the form
+        fahrzeug.beschreibung = beschreibung;
         fahrzeug.fahrzeugtype = fahrzeugtype;
+        fahrzeug.kennzeichen = kennzeichen;
         fahrzeug.kilometerstand = kilometerstand;
+        fahrzeug.fahrzeughalter.vorname = vorname;
+        fahrzeug.fahrzeughalter.nachname = nachname;
+
         log.debug('UpdateFahrzeugComponent.onSubmit: fahrzeug=', fahrzeug);
 
         service
@@ -109,10 +103,6 @@ export class UpdateFahrzeugComponent implements OnInit {
                 tap(result => this.#handleUpdateResult(result)),
             )
             .subscribe({ next: () => this.#navigateHome() });
-
-        // damit das (Submit-) Ereignis konsumiert wird und nicht an
-        // uebergeordnete Eltern-Komponenten propagiert wird bis zum
-        // Refresh der gesamten Seite
         return false;
     }
 
@@ -125,13 +115,16 @@ export class UpdateFahrzeugComponent implements OnInit {
         this.fahrzeug = result;
         this.errorMsg = undefined;
 
-        const kennzeichen = `Aktualisieren ${this.fahrzeug.id}`;
-        this.titleService.setTitle(kennzeichen);
+        const titel = `Aktualisieren ${this.fahrzeug.id}`;
+        this.titleService.setTitle(titel);
     }
 
     #handleFindError(err: FindError) {
         const { statuscode } = err;
-        log.debug('UpdateFahrzeugComponent.#handleError: statuscode=', statuscode);
+        log.debug(
+            'UpdateFahrzeugComponent.#handleError: statuscode=',
+            statuscode,
+        );
 
         this.fahrzeug = undefined;
 
@@ -167,7 +160,6 @@ export class UpdateFahrzeugComponent implements OnInit {
         switch (statuscode) {
             case HttpStatusCode.UnprocessableEntity: {
                 const { cause } = result;
-                // TODO Aufbereitung der Fehlermeldung: u.a. Anfuehrungszeichen
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                 this.errorMsg =
                     cause instanceof HttpErrorResponse

@@ -6,6 +6,7 @@ import { DetailsFahrzeugComponent } from './details-fahrzeug/details-fahrzeug.co
 import { FahrzeugModule } from './fahrzeug.module';
 import { NgModule } from '@angular/core';
 import { SucheFahrzeugeComponent } from './suche-fahrzeug/suche-fahrzeuge.component';
+import { UpdateFahrzeugComponent } from './update-fahrzeug/update-fahrzeug.component';
 
 // route definitions for the feature-module "fahrzeug":
 const routes: Routes = [
@@ -18,6 +19,11 @@ const routes: Routes = [
         component: CreateFahrzeugComponent,
         canActivate: [AdminGuard],
         canDeactivate: [CreateFahrzeugGuard],
+    },
+    {
+        path: 'update/:id',
+        component: UpdateFahrzeugComponent,
+        canActivate: [AdminGuard],
     },
     {
         path: ':id',

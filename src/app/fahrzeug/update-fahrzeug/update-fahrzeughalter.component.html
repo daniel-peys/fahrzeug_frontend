@@ -1,0 +1,29 @@
+<div [formGroup]="updateForm" class="row">
+  <mat-form-field appearance="fill">
+    <mat-label for="vornameUpdate"> Vorname </mat-label>
+    <input
+      id="vornameUpdate"
+      placeholder="Vorname"
+      formControlName="vorname"
+      [class.is-invalid]="vorname.invalid && vorname.touched"
+      [class.is-valid]="vorname.valid && vorname.touched"
+      matInput
+    />
+  </mat-form-field>
+</div>
+
+<div [formGroup]="updateForm" class="row">
+  <mat-form-field appearance="fill">
+    <mat-label for="nachnameUpdate" class="col col-2 col-form-label gy-3">
+      Nachname
+    </mat-label>
+    <input
+      id="nachnameUpdate"
+      placeholder="Nachname"
+      formControlName="nachname"
+      [class.is-invalid]="nachname.invalid && nachname.touched"
+      [class.is-valid]="nachname.valid && nachname.touched"
+      matInput
+    />
+  </mat-form-field>
+</div>
