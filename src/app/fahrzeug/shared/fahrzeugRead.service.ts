@@ -77,7 +77,7 @@ export class FahrzeugReadService {
         restResult: FahrzeugeServer | FindError,
     ): Fahrzeug[] | FindError {
         log.debug(
-            'BuchReadService.#toBuchArrayOrError: restResult=',
+            'FahrzeugReadService.#toBuchArrayOrError: restResult=',
             restResult,
         );
         if (restResult instanceof FindError) {
@@ -88,7 +88,10 @@ export class FahrzeugReadService {
         const fahrzeuge = restResult._embedded.fahrzeuge.map(fahrzeugServer =>
             toFahrzeug(fahrzeugServer),
         );
-        log.debug('BuchReadService.#toBuchArrayOrError: buecher=', fahrzeuge);
+        log.debug(
+            'FahrzeugReadService.#toBuchArrayOrError: fahrzeuge=',
+            fahrzeuge,
+        );
         return fahrzeuge;
     }
 
@@ -97,16 +100,16 @@ export class FahrzeugReadService {
      * @param id the ID of the fahrzeug
      */
     findById(id: string | undefined): Observable<Fahrzeug | FindError> {
-        log.debug('BuchReadService.findById: id=', id);
+        log.debug('FahrzeugReadService.findById: id=', id);
 
         if (id === undefined) {
-            log.debug('BuchReadService.findById: Keine Id');
+            log.debug('FahrzeugReadService.findById: Keine Id');
             return of(this.#buildFindError());
         }
 
         // load here, due to the missing version number
         const url = `${this.#baseUrl}/${id}`;
-        log.debug('BuchReadService.findById: url=', url);
+        log.debug('FahrzeugReadService.findById: url=', url);
 
         return (
             this.httpClient
@@ -124,12 +127,12 @@ export class FahrzeugReadService {
                         return of(this.#buildFindError(errResponse));
                     }),
                     // Observable<HttpResponse<BuchServer>> or Observable<FindError>
-                    map(restResult => this.#toBuchOrError(restResult)),
+                    map(restResult => this.#toFahrzeugOrError(restResult)),
                 )
         );
     }
 
-    #toBuchOrError(
+    #toFahrzeugOrError(
         restResult: FindError | HttpResponse<FahrzeugServer>,
     ): Fahrzeug | FindError {
         if (restResult instanceof FindError) {

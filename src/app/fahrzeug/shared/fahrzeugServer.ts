@@ -63,6 +63,8 @@ export const toFahrzeug = (fahrzeugServer: FahrzeugServer, etag?: string) => {
         datumTemporal = new Temporal.PlainDate(year, month, day);
     }
 
+    const { vorname, nachname } = fahrzeughalter;
+
     const fahrzeug: Fahrzeug = {
         id,
         beschreibung,
@@ -70,7 +72,7 @@ export const toFahrzeug = (fahrzeugServer: FahrzeugServer, etag?: string) => {
         kilometerstand,
         erstzulassung: datumTemporal,
         fahrzeugtype,
-        fahrzeughalter,
+        fahrzeughalter: { vorname, nachname },
         version,
     };
     log.debug('Fahrzeug.fromServer: fahrzeug=', fahrzeug);
