@@ -101,3 +101,9 @@ Authorization: Bearer {{login.response.body.$.token}}
 ### Loeschen eines vorhandenen Fahrzeugs
 DELETE {{{{{{angularUrl}}}}}}/rest/fahrzeuge/00000000-0000-0000-0000-000000000005
 Authorization: Bearer {{login.response.body.$.token}}
+
+
+
+GET https://localhost:8080/api
+Accept: application/hal+json
+Authorization: Basic admin p

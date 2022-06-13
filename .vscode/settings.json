@@ -3,7 +3,7 @@
     "localHTTPS": {
       "restUrl": "https://localhost:8080/api",
       "authUrl": "https://localhost:8080/auth",
-      "angularUrl": "https://localhost:4200"
+      "angularUrl": "http://localhost:4200"
     }
   }
 }
