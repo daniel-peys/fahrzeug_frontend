@@ -6,10 +6,10 @@
 hide empty description
 [*] --> index.html
 state index.html
-index.html -down-> suche.html : suchkriterien
+index.html -down-> suche.html
 
-state suche.html
-suche.html -down-> waiting.html
+state suche.html 
+suche.html -down-> waiting.html : suchkriterien
 
 state waiting.html
 waiting.html -down-> suchergebnis.html
