@@ -1,109 +1,76 @@
-// Copyright (C) 2020 - present Juergen Zimmermann, Hochschule Karlsruhe
-//
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-//
-// N e t z w e r k   -  V e r b i n d u n g   n o t w e n d i g
-//
-
 ### Login
 // @name login
-POST {{{{angularUrl}}}}/rest/login
+POST {{angularUrl}}/rest/api/auth/login
 Content-Type: application/x-www-form-urlencoded
 
 username=admin&password=p
 
 ### Suche alle Fahrzeuge
-GET {{{{angularUrl}}}}/rest/fahrzeuge
+GET {{angularUrl}}/rest/api
 
 ### Suche mit vorhandener Fahrzeug-ID
-GET {{{{angularUrl}}}}/fahrzeuge/00000000-0000-0000-0000-000000000001
+GET {{angularUrl}}/rest/api/00000000-0000-0000-0000-000000000000
 
-### Suche mit vorhandener Buch-ID und Versionsnummer
-GET {{{{angularUrl}}}}/fahrzeuge/00000000-0000-0000-0000-000000000001
-If-None-Match: 0
+### Suche mit vorhandener Fahrzeug-ID und Versionsnummer
+GET {{angularUrl}}/rest/api/00000000-0000-0000-0000-000000000000
+If-None-Match: "0"
 
-### Optionen zu Buch-ID
-OPTIONS {{{{angularUrl}}}}/rest/fahrzeuge/00000000-0000-0000-0000-000000000001
+### Suche mit ungueltiger Fahrzeug-ID
+GET {{angularUrl}}/rest/api/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY
 
-### Suche mit ungueltiger Buch-ID
-GET {{localHTTPS}}/rest/buecher/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY
+### Suche mit nicht-vorhandener Fahrzeug-ID
+GET {{angularUrl}}/rest/api/00000000-0000-0000-0000-000000000001
 
-### Suche mit nicht-vorhandener Buch-ID
-GET {{localHTTPS}}/rest/buecher/99999999-9999-9999-9999-999999999999
+### Suche mit vorhandem Kennzeichen
+GET {{angularUrl}}/rest/api?kennzeichen=KA N 1
 
-### Suche mit vorhandenem Titel
-GET {{localHTTPS}}/rest/buecher?titel=a
+### Suche mit vorhandener Beschreibung
+GET {{angularUrl}}/rest/api?beschreibung=a
 
-### Suche mit vorhandener ISBN-Nummber
-GET {{localHTTPS}}/rest/buecher?isbn=000-0-00000-000-1
+### Suche mit vorhandenem Fahrzeugtyp
+GET {{angularUrl}}/rest/api?fahrzeugtyp=P
 
-### Suche mit vorhandenen Schlagwoertern
-GET {{localHTTPS}}/rest/buecher?javascript=true&typescript=true
+### Suche mit nicht vorhandenem vorname
+GET {{angularUrl}}/rest/api?vorname=elf
 
-### Suche mit gueltiger Buchart
-GET {{localHTTPS}}/rest/buecher?art=KINDLE
 
-### Suche mit gueltigem Rating
-GET {{localHTTPS}}/rest/buecher?rating=1
-
-### Suche lieferbare Buecher
-GET {{localHTTPS}}/rest/buecher?lieferbar=true
-
-### Neues Buch anlegen
-POST {{localHTTPS}}/rest/buecher
+### Neues fahrzeug anlegen
+POST {{angularUrl}}/rest/api/
 Content-Type: application/json
-Authorization: Bearer {{login.response.body.$.token}}
+Authorization: Basic admin p
 
-< ./buch-neu.json
+< ./fahrzeug-neu.json
 
-### Neues Buch mit ungueltigen Daten anlegen
-POST {{localHTTPS}}/rest/buecher
+### Neues Fahrzeug mit ungueltigen Daten anlegen
+POST {{angularUrl}}/rest/api/
 Content-Type: application/json
-Authorization: Bearer {{login.response.body.$.token}}
+Authorization: Basic admin p
 
-< ./buch-neu-invalid.json
+< ./fahrzeug-neu-invalid.json
 
-### Vorhandenes Buch aktualisieren
-PUT {{localHTTPS}}/rest/buecher/00000000-0000-0000-0000-000000000003
+### Vorhandenes Fahrzeug aktualisieren
+PUT {{angularUrl}}/rest/api/00000000-0000-0000-0000-000000000000
 Content-Type: application/json
-Authorization: Bearer {{login.response.body.$.token}}
-If-Match: 0
+Authorization: Basic admin p
+If-Match: "0"
 
-< ./buch-3-put.json
+< ./fahrzeug-3-put.json
 
-### Vorhandenes Buch *OHNE* Versionsnummer aktualisieren
-PUT {{localHTTPS}}/rest/buecher/00000000-0000-0000-0000-000000000003
+### Vorhandenes Fahrzeug *OHNE* Versionsnummer aktualisieren
+PUT {{angularUrl}}/rest/api/00000000-0000-0000-0000-000000000000
 Content-Type: application/json
-Authorization: Bearer {{login.response.body.$.token}}
+Authorization: Basic admin p
 
-< ./buch-3-put.json
+< ./fahrzeug-3-put.json
 
 ### Vorhandenes Fahrzeug mit ungueltigen Daten aktualisieren
-PUT {{{{{{angularUrl}}}}}}/rest/fahrzeuge/00000000-0000-0000-0000-000000000003
-If-Match: 0
+PUT {{angularUrl}}/rest/api/00000000-0000-0000-0000-000000000000
+If-Match: "0"
 Content-Type: application/json
-Authorization: Bearer {{login.response.body.$.token}}
+Authorization: Basic admin p
 
-< ./buch-3-put-invalid.json
+< ./fahrzeug-3-put-invalid.json
 
 ### Loeschen eines vorhandenen Fahrzeugs
-DELETE {{{{{{angularUrl}}}}}}/rest/fahrzeuge/00000000-0000-0000-0000-000000000005
-Authorization: Bearer {{login.response.body.$.token}}
-
-
-
-GET https://localhost:8080/api
-Accept: application/hal+json
+DELETE {{angularUrl}}/rest/api/00000000-0000-0000-0000-000000000002
 Authorization: Basic admin p

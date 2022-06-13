@@ -1,8 +1,11 @@
 {
-  "beschreibung": "",
-  "erstzulassung": "2025-01-01",
-  "fahrzeughalter": { "vorname": "", "nachname": "!" },
-  "fahrzeugtype": "",
-  "kennzeichen": "W ",
-  "kilometerstand": -644
+  "beschreibung": "Apfel",
+  "kennzeichen": "Elon Musk",
+  "kilometerstand": -36,
+  "erstzulassung": "2020-06-12",
+  "fahrzeugtype": "P",
+  "fahrzeughalter": {
+    "vorname": "Franz",
+    "nachname": "Peter"
+  }
 }
