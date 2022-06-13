@@ -1,3 +1,9 @@
 {
-  "explorer.compactFolders": false
+  "rest-client.environmentVariables": {
+    "localHTTPS": {
+      "restUrl": "https://localhost:8080/api",
+      "authUrl": "https://localhost:8080/auth",
+      "angularUrl": "https://localhost:4020"
+    }
+  }
 }
