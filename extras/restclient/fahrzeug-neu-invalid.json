@@ -1,12 +1,8 @@
 {
-  "titel": "?!",
-  "rating": 2,
-  "art": "UNSICHTBAR",
-  "verlag": "NO_VERLAG",
-  "preis": -1,
-  "rabatt": 0,
-  "lieferbar": true,
-  "datum": "12345-123-123",
-  "isbn": "falsche-isbn",
-  "homepage": "anyHomepage"
+  "beschreibung": "",
+  "erstzulassung": "2025-01-01",
+  "fahrzeughalter": { "vorname": "", "nachname": "!" },
+  "fahrzeugtype": "",
+  "kennzeichen": "W ",
+  "kilometerstand": -644
 }

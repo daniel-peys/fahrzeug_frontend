@@ -1,14 +1,12 @@
 {
-  "_id": "00000000-0000-0000-0000-000000000003",
-  "titel": "?!",
-  "rating": 5,
-  "art": "KINDLE",
-  "verlag": "IWI_VERLAG",
-  "preis": 9999,
-  "rabatt": 1,
-  "lieferbar": true,
-  "datum": "12345-123-123",
-  "isbn": "falsche-isbn",
-  "homepage": "anyHomepage",
-  "schlagwoerter": ["JAVASCRIPT"]
+  "beschreibung": "Kran",
+  "kennzeichen": "Apfel",
+  "kilometerstand": -3,
+  "erstzulassung": "2021-01-06",
+  "fahrzeugtype": "N",
+  "fahrzeughalter": {
+    "id": "20000000-0000-0000-0000-000000000030",
+    "vorname": "Wiiiiiiiiiiiiiiiiiiiiiiii",
+    "nachname": "Waaaa"
+  }
 }

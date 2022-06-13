@@ -1,13 +1,12 @@
 {
-  "titel": "Geaendert",
-  "rating": 5,
-  "art": "KINDLE",
-  "verlag": "FOO_VERLAG",
-  "preis": 9999,
-  "rabatt": 0.99,
-  "lieferbar": true,
-  "datum": "2020-02-01",
-  "isbn": "0-0070-9732-8",
-  "homepage": "https://test.de/",
-  "schlagwoerter": ["JAVASCRIPT", "TYPESCRIPT"]
+  "beschreibung": "Kran",
+  "kennzeichen": "KA A 88",
+  "kilometerstand": 6,
+  "erstzulassung": "2021-01-06",
+  "fahrzeugtype": "N",
+  "fahrzeughalter": {
+    "id": "20000000-0000-0000-0000-000000000030",
+    "vorname": "Wiiiiiiiiiiiiiiiiiiiiiiii",
+    "nachname": "Waaaa"
+  }
 }

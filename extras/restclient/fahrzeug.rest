@@ -19,23 +19,23 @@
 
 ### Login
 // @name login
-POST {{localHTTPS}}/rest/login
+POST {{{{angularUrl}}}}/rest/login
 Content-Type: application/x-www-form-urlencoded
 
 username=admin&password=p
 
-### Suche alle Buecher
-GET {{localHTTPS}}/rest/buecher
+### Suche alle Fahrzeuge
+GET {{{{angularUrl}}}}/rest/fahrzeuge
 
-### Suche mit vorhandener Buch-ID
-GET {{localHTTPS}}/buecher/00000000-0000-0000-0000-000000000001
+### Suche mit vorhandener Fahrzeug-ID
+GET {{{{angularUrl}}}}/fahrzeuge/00000000-0000-0000-0000-000000000001
 
 ### Suche mit vorhandener Buch-ID und Versionsnummer
-GET {{localHTTPS}}/buecher/00000000-0000-0000-0000-000000000001
+GET {{{{angularUrl}}}}/fahrzeuge/00000000-0000-0000-0000-000000000001
 If-None-Match: 0
 
 ### Optionen zu Buch-ID
-OPTIONS {{localHTTPS}}/rest/buecher/00000000-0000-0000-0000-000000000001
+OPTIONS {{{{angularUrl}}}}/rest/fahrzeuge/00000000-0000-0000-0000-000000000001
 
 ### Suche mit ungueltiger Buch-ID
 GET {{localHTTPS}}/rest/buecher/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY
@@ -90,14 +90,14 @@ Authorization: Bearer {{login.response.body.$.token}}
 
 < ./buch-3-put.json
 
-### Vorhandenes Buch mit ungueltigen Daten aktualisieren
-PUT {{localHTTPS}}/rest/buecher/00000000-0000-0000-0000-000000000003
+### Vorhandenes Fahrzeug mit ungueltigen Daten aktualisieren
+PUT {{{{{{angularUrl}}}}}}/rest/fahrzeuge/00000000-0000-0000-0000-000000000003
+If-Match: 0
 Content-Type: application/json
 Authorization: Bearer {{login.response.body.$.token}}
-If-Match: 0
 
 < ./buch-3-put-invalid.json
 
-### Loeschen eines vorhandenen Buches
-DELETE {{localHTTPS}}/rest/buecher/00000000-0000-0000-0000-000000000005
+### Loeschen eines vorhandenen Fahrzeugs
+DELETE {{{{{{angularUrl}}}}}}/rest/fahrzeuge/00000000-0000-0000-0000-000000000005
 Authorization: Bearer {{login.response.body.$.token}}
