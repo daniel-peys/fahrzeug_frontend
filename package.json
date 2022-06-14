@@ -27,6 +27,7 @@
     "prepack": "npm run build:dev",
     "pack": "pack build juergenzimmermann/fahrzeugweb:1.0.0 --builder paketobuildpacks/builder:base",
     "prettier": "prettier --write src/**/*.ts src/**/*.html src/**/*.scss",
+    "prettier:check": "prettier --check src/**/*.ts src/**/*.html src/**/*.scss",
     "presource-map-explorer": "npm run build -- --source-map && del dist/acme/ngsw-worker.js && del dist/acme/safety-worker.js && del dist/acme/worker-basic.min.js",
     "source-map-explorer": "source-map-explorer dist/acme/main.*.js dist/acme/main.*.js.map --html source-map-explorer.html --only-mapped",
     "stylelint": "stylelint src/app/**/*.scss",
