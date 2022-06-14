@@ -4,6 +4,7 @@
   --bg-color-primary: #303030;
   --bg-color-secondary: #454545;
   --bg-color-tertiary: #e91e62;
+  --font-color: #ffffff;
 }
 
 /* general settings */
@@ -29,7 +30,7 @@ label,
 mat-label,
 .header-box,
 .info-box {
-  color: whitesmoke !important;
+  color: var(--font-color) !important;
 }
 
 .mat-select-panel {
@@ -59,7 +60,7 @@ mat-label,
 
 .btn-tertiary {
   background-color: var(--bg-color-tertiary) !important;
-  color: whitesmoke !important;
+  color: var(--font-color) !important;
 }
 
 /* shared media queries */

@@ -6,15 +6,15 @@
 
 /* change label color on focused */
 ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
-  color: whitesmoke !important;
+  color: var(--font-color) !important;
 }
 
 /* underline border color on focused */
 ::ng-deep .mat-focused .mat-form-field-ripple {
-  background-color: whitesmoke !important;
+  background-color: var(--font-color) !important;
 }
 
 /* underline border */
 ::ng-deep .mat-form-field-underline {
-  background-color: whitesmoke !important;
+  background-color: var(--font-color) !important;
 }

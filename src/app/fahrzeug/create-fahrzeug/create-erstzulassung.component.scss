@@ -1,5 +1,5 @@
-/* color of the icon */
+/* stylelint-disable selector-pseudo-element-no-unknown */
 
 ::ng-deep .mat-datepicker-toggle .mat-icon-button {
-  color: whitesmoke;
+  color: var(--font-color);
 }
