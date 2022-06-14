@@ -147,9 +147,7 @@ export class FahrzeugReadService {
         const etag = headers.get('ETag') ?? undefined;
         log.debug('FahrzeugReadService.#toFahrzeugOrError: etag=', etag);
 
-        // TODO Immediately return this expression instead of assigning it to the temporary variable "fahrzeug"
-        const fahrzeug = toFahrzeug(body, etag);
-        return fahrzeug;
+        return toFahrzeug(body, etag);
     }
 
     /**

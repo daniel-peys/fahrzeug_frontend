@@ -1,3 +1,5 @@
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable array-bracket-newline */
 import { Component, Input, type OnInit } from '@angular/core';
 import { FormControl, type FormGroup, Validators } from '@angular/forms';
 import log from 'loglevel';
@@ -17,7 +19,6 @@ export class UpdateKennzeichenComponent implements OnInit {
     currentValue!: string;
 
     kennzeichen!: FormControl;
-    // TODO Use concise character class syntax '\d' instead of '[0-9]'.
 
     ngOnInit() {
         log.debug(
@@ -25,9 +26,7 @@ export class UpdateKennzeichenComponent implements OnInit {
             this.currentValue,
         );
         this.kennzeichen = new FormControl(this.currentValue, [
-            Validators.pattern(
-                /[A-ZÖÜÄ]{1,3} [A-ZÖÜÄ]{1,2} [1-9]{1}[0-9]{0,2}/u,
-            ),
+            Validators.pattern(/[A-ZÖÜÄ]{1,3} [A-ZÖÜÄ]{1,2} [1-9]{1}\d{0,2}/u),
         ]);
         this.updateForm.addControl('kennzeichen', this.kennzeichen);
     }
