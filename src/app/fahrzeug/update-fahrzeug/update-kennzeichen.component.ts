@@ -17,6 +17,7 @@ export class UpdateKennzeichenComponent implements OnInit {
     currentValue!: string;
 
     kennzeichen!: FormControl;
+    // TODO Use concise character class syntax '\d' instead of '[0-9]'.
 
     ngOnInit() {
         log.debug(

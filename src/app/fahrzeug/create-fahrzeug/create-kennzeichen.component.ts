@@ -12,6 +12,7 @@ import log from 'loglevel';
 export class CreateKennzeichenComponent implements OnInit {
     @Input()
     createForm!: FormGroup;
+    // TODO Use concise character class syntax '\d' instead of '[0-9]'
 
     readonly kennzeichen = new FormControl(undefined, [
         Validators.required,
