@@ -35,6 +35,6 @@ export class SucheFahrzeughalterComponent {
         log.debug(
             `SucheFahrzeughalterComponent.onBlur: vorname=${this.nachname}, nachname=${this.nachname}`,
         );
-        this.vorname$.next(this.nachname);
+        this.nachname$.next(this.nachname);
     }
 }
