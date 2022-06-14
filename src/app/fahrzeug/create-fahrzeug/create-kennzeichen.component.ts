@@ -15,7 +15,7 @@ export class CreateKennzeichenComponent implements OnInit {
 
     readonly kennzeichen = new FormControl(undefined, [
         Validators.required,
-        Validators.pattern(/[A-ZÖÜÄ]{1,3} [A-ZÖÜÄ]{1,2} [1-9]{1}\d{0,2}/u),
+        Validators.pattern(/[A-Z]{1,3} [A-Z]{1,2} \d{1,4}$/u),
     ]);
 
     ngOnInit() {

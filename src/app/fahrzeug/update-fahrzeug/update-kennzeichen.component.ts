@@ -26,7 +26,7 @@ export class UpdateKennzeichenComponent implements OnInit {
             this.currentValue,
         );
         this.kennzeichen = new FormControl(this.currentValue, [
-            Validators.pattern(/[A-ZÖÜÄ]{1,3} [A-ZÖÜÄ]{1,2} [1-9]{1}\d{0,2}/u),
+            Validators.pattern(/[A-Z]{1,3} [A-Z]{1,2} \d{1,4}$/u),
         ]);
         this.updateForm.addControl('kennzeichen', this.kennzeichen);
     }
