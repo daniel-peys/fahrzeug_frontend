@@ -1,9 +1,12 @@
 <ul class="navbar-nav me-auto">
+  <li class="nav-item clickable d-flex align-items-center">
+    <hs-darkmode></hs-darkmode>
+  </li>
   <li class="nav-item clickable">
     <a
       routerLink="/fahrzeuge/suche"
       routerLinkActive="active"
-      class="nav-link d-flex align-content-center text-light"
+      class="nav-link d-flex align-content-centert"
       aria-label="Suche Fahrzeuge"
     >
       <i class="material-icons">search</i>
@@ -13,7 +16,7 @@
   <li class="nav-item clickable" *ngIf="isAdmin$ | async">
     <a
       routerLink="/fahrzeuge/create"
-      class="nav-link d-flex align-content-center text-light"
+      class="nav-link d-flex align-content-center"
       aria-label="Neues Fahrzeug anlegen"
     >
       <i class="material-icons">local_shipping</i>
